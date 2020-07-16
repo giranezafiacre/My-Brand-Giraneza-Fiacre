@@ -1,0 +1,141 @@
+
+*{
+    font-family: "Lato",sans-serif;
+}
+body{
+    background-image: url(../Images/fire.JPG);
+    background-repeat: no-repeat;
+    background-size: cover,contain;
+}
+header nav{
+    display: inline-flex;
+}
+header img{
+    height: 8vh;
+    border-radius: 1vh;
+    margin-left: -5vw;
+    margin-right: 8.8vw;
+}
+header a{
+    text-decoration: none;
+    color: green;
+}
+.title{
+    color: green;
+}
+header ul{
+    margin-left: 7.5vw;
+    font-size: 18px;
+}
+header ul :first{
+    justify-self: start;
+    
+}
+.sideNav{
+
+    position: fixed;
+    margin-top: 17vh;
+}
+.sideNav img{
+    height: 5vh;
+    width: 3vw;
+    border-radius: 2vh;
+    margin-left: -3vw;
+}
+.one{
+    width: 30vw;
+    margin-top: 26vh;
+    margin-left: 8vw;
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 10vh;
+}
+.started a{
+    text-decoration: none;
+    color: white;
+    background-color: green;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    margin-left: 15vw;
+    
+}
+.started{
+    margin-bottom: 30vh;
+}
+.black{
+    background-color:black;
+    padding: 5vh;
+    margin-left: -10vw;
+    padding-right: 6vw;
+    margin-right: -5.5vw;
+}
+.black p{
+    width: 30vw;
+    color: white;
+    text-align: center;
+    margin-left: 40vw;
+    font-size: 17px;
+}
+.black input{
+    border-radius: 1vh;
+    height: 3.8vh;
+    text-align: center;
+}
+.input{
+    margin-left: 35vw;
+    
+}
+
+.input a{
+    color: white;
+    background-color: rgb(231, 104, 104);
+    text-decoration: none;
+    padding: 7px 50px 7px 50px;
+    border-radius: 1vh;
+}
+.images img{
+    height: 30vh;
+    width: 25vw;
+}
+.images p{
+    width: 25vw;
+}
+.images{
+    padding-top: 10vh;
+    background-color: white;
+    background-size: contain;
+    display: inline-flex;
+    padding-left: 6vw;
+    margin-left: -0.5vw;
+}
+.images .summary{
+margin-right: 10vw;
+}
+.images :last-child{
+    margin-right: 0.65vw;
+}
+/*  */
+footer{
+    background-color: rgb(161, 156, 156);
+    margin-bottom: -1.32vh;
+    padding-bottom: 7vh;
+    padding-left: 6vw;
+    margin-left: -0.5vw;
+    padding-right: 6vw;
+    margin-right: -5.5vw;
+}
+footer nav{
+    display: inline-flex;
+}
+footer a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+footer ul{
+    margin-left: 13.5vw;
+}
+footer ul :first{
+    justify-self: start;
+    
+}
