@@ -1,0 +1,56 @@
+*{
+    font-family: "Lato",sans-serif;
+}
+
+header nav{
+    display: inline-flex;
+}
+header img{
+    height: 8vh;
+    border-radius: 1vh;
+    margin-left: -5vw;
+    margin-right: 8.8vw;
+}
+header a{
+    text-decoration: none;
+    color: green;
+}
+.title{
+    color: green;
+}
+header ul{
+    margin-left: 7.5vw;
+    font-size: 18px;
+}
+header ul :first-child{
+    justify-self: start;
+    
+}
+.all{
+    display: inline-flex;
+}
+.input input{
+    height: 16vh;
+    border-radius: 1vh;
+    width: 25vw;
+    margin-bottom: 6vh;
+    margin-left: 5.2vw;
+    margin-right: 15vw;
+}
+.form3{
+    margin-bottom: 3vh;
+}
+.input a{
+    border-radius: 1vh;
+    color: white;
+    background-color:green;
+    text-decoration: none;
+    padding: 1.5vh 4vw 1.5vh 4vw;
+    margin-left: 9.7vw;
+}
+.input :focus::-webkit-input-placeholder {
+    font-size: .85em;
+    position: relative;
+    top: -15px; 
+    transition: 0.2s ease-out;
+}
