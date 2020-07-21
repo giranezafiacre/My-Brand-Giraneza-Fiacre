@@ -8,23 +8,25 @@ header nav{
 header img{
     height: 8vh;
     border-radius: 1vh;
-    margin-left: -5vw;
-    margin-right: 8.8vw;
+    margin-left: 3vw;
+    margin-right: 33vw;
 }
 header a{
     text-decoration: none;
     color: green;
+    font-size: 18px;
+    margin-left: 5vw;
 }
 .title{
-    color: green;
-}
-header ul{
-    margin-left: 7.5vw;
+    color: rgb(194, 38, 194);
     font-size: 18px;
+    margin-right: 10vw;
 }
-header ul :first-child{
-    justify-self: start;
-    
+.dont{
+    margin-left: 7vw;
+}
+.dont a{
+    color: green;
 }
 p{
     width: 26vw;
