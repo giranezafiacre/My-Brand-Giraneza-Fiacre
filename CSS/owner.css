@@ -1,0 +1,99 @@
+body{
+    height: 95vh;
+    font-family: "Lato",sans-serif;
+    background-image: linear-gradient(to right bottom,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8)),url(../Images/Books.jpg);
+    background-size : cover;
+    background-position: top;
+    position: relative;
+}
+header nav{
+    display: inline-flex;
+}
+header img{
+    height: 8vh;
+    border-radius: 1vh;
+    margin-left: -5vw;
+    margin-right: 8.8vw;
+}
+header a{
+    text-decoration: none;
+    color: green;
+}
+.title{
+    color: rgb(223, 25, 223);
+}
+header ul{
+    margin-left: 7.5vw;
+    font-size: 18px;
+}
+header ul :first-child{
+    justify-self: start;
+    
+}
+.table{
+    margin-top: 10vh;
+    border-radius: 2.5vh;
+    background-color: grey;
+    padding: 2vh;
+}
+
+.table span{
+    margin-left: 2vw;
+    background-color: white;
+    padding: 1vh 2vw 1vh 2vw ;
+    border-radius: 1vh;
+}
+.table table span{
+    margin-bottom: 3vh;
+}
+.table .qtitle{
+    margin-top: 5vh;
+}
+.table textarea{
+    border-radius: 2vh;
+    width: 70%;
+    margin-top: 2vh;
+    outline: none;
+}
+.table table{
+    width: 86%;
+    margin-top: 2vh;
+    margin-left: 10%;
+}
+table a{
+    text-decoration: none;
+    color: black;
+    
+}
+table tr{
+    margin-top: 3vh;
+    background-color: white;
+}
+table td{
+    padding: 3vh 5vw 3vh 5vw;
+}
+table button{
+    margin-left: 2vw;
+    background-color: white;
+    padding-top: 1vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
+    padding-right: 2vw;
+    border-color: black;
+    border-radius: 1vh;
+}
+.profile{
+    margin-top: 4vh;
+}
+.profile a{
+    margin-left: 2vw;
+    
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    padding-top: 1vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
+    padding-right: 2vw;
+    border-radius: 1vh;
+}
