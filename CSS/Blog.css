@@ -1,0 +1,41 @@
+*{
+    font-family: "Lato",sans-serif;
+}
+body{
+    background-image: url(../Images/worktable.jpg);
+    background-repeat: no-repeat;
+    background-size: cover,contain;
+}
+header nav{
+    display: inline-flex;
+}
+header img{
+    height: 8vh;
+    border-radius: 1vh;
+    margin-left: 9vw;
+    margin-right: 33vw;
+}
+header a{
+    text-decoration: none;
+    color: green;
+    font-size: 18px;
+    margin-left: 5vw;
+}
+.title{
+    color: green;
+    font-size: 18px;
+    margin-right: 15vw;
+}
+.blog >a{
+    
+    text-decoration: none;
+    color: white;
+    background-color: rgb(52, 52, 184);
+    padding: 20px 50px 20px 50px;
+    border-radius: 10px;
+    margin-left: 2vw;
+}
+.blog{
+    margin-top: 40vh;
+    margin-left: 40vw;
+}

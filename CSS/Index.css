@@ -3,7 +3,7 @@
     font-family: "Lato",sans-serif;
 }
 body{
-    background-image: url(../Images/fire.JPG);
+    background-image: url(../Images/background1.jpg);
     background-repeat: no-repeat;
     background-size: cover,contain;
 }
@@ -13,23 +13,19 @@ header nav{
 header img{
     height: 8vh;
     border-radius: 1vh;
-    margin-left: -5vw;
-    margin-right: 8.8vw;
+    margin-left: 9vw;
+    margin-right: 33vw;
 }
 header a{
     text-decoration: none;
     color: green;
+    font-size: 18px;
+    margin-left: 5vw;
 }
 .title{
     color: green;
-}
-header ul{
-    margin-left: 7.5vw;
     font-size: 18px;
-}
-header ul :first{
-    justify-self: start;
-    
+    margin-right: 15vw;
 }
 .sideNav{
 
@@ -45,18 +41,118 @@ header ul :first{
 .one{
     width: 30vw;
     margin-top: 26vh;
-    margin-left: 8vw;
+    margin-left: 40vw;
     font-size: 17px;
     text-align: center;
     margin-bottom: 10vh;
 }
+.gmail1 img{
+    cursor: pointer;
+}
+.gmail1 {
+    display: inline-block;
+  }
+  
+  .gmail1 .gmailtext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding:4px 2px;
+    z-index: 1;
+  }
+  
+  .gmail1:hover span {
+    visibility: visible;
+  }
+.location1 img{
+    cursor: pointer;
+}
+.location1 {
+    display: inline-block;
+  }
+  
+  .location1 .loctext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding:4px 2px;
+    z-index: 1;
+  }
+  
+  .location1:hover span {
+    visibility: visible;
+  }
+  .whatsap1 img{
+    cursor: pointer;
+}
+.whatsap1 {
+    display: inline-block;
+  }
+  
+.whatsap1 .whatsaptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding:4px 2px;
+    z-index: 1;
+  }
+  
+  .whatsap1:hover span {
+    visibility: visible;
+  }
+  .phone1{
+    display: inline-block;
+  }
+  .phone1 .phonetext{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding:4px 2px;
+    z-index: 1;
+  }
+  .phone1:hover span{
+      visibility: visible;
+  }
+  .facebook1 img{
+    cursor: pointer;
+}
+.facebook1 {
+    display: inline-block;
+  }
+  
+.facebook1 .facebooktext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding:4px 2px;
+    z-index: 1;
+  }
+  
+  .facebook1:hover span {
+    visibility: visible;
+  }
 .started a{
     text-decoration: none;
     color: white;
     background-color: green;
     padding: 10px 50px 10px 50px;
     border-radius: 10px;
-    margin-left: 15vw;
+    margin-left: 47vw;
     
 }
 .started{
@@ -73,7 +169,7 @@ header ul :first{
     width: 30vw;
     color: white;
     text-align: center;
-    margin-left: 40vw;
+    margin-left: 45vw;
     font-size: 17px;
 }
 .black input{
@@ -82,7 +178,7 @@ header ul :first{
     text-align: center;
 }
 .input{
-    margin-left: 35vw;
+    margin-left: 40vw;
     
 }
 
@@ -96,6 +192,7 @@ header ul :first{
 .images img{
     height: 30vh;
     width: 25vw;
+
 }
 .images p{
     width: 25vw;
@@ -123,6 +220,7 @@ footer{
     margin-left: -0.5vw;
     padding-right: 6vw;
     margin-right: -5.5vw;
+    bottom: -100%;
 }
 footer nav{
     display: inline-flex;
@@ -133,7 +231,7 @@ footer a{
     font-size: 20px;
 }
 footer ul{
-    margin-left: 13.5vw;
+    margin-left: 18vw;
 }
 footer ul :first{
     justify-self: start;
