@@ -6,26 +6,20 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-#botoes li{
-    display: inline-block;
-    list-style-type: none;
-    justify-content: center;
-    vertical-align: middle;
+header nav{
+    display: inline-flex;
 }
 header img{
     height: 8vh;
-    -webkit-padding-start: 0vh;
     border-radius: 1vh;
-    margin-left: 4vw;
+    margin-left: 1vw;
     margin-right: 33vw;
-    margin-bottom: 3vh;
 }
 header a{
-    vertical-align:bottom;
     text-decoration: none;
     color: green;
     font-size: 18px;
-    margin-left: 10vw;
+    margin-left: 5vw;
 }
 .title{
     color: rgb(194, 38, 194);

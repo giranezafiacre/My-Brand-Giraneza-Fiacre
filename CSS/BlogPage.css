@@ -1,26 +1,20 @@
 *{
     font-family: "Lato",sans-serif;
 }
-#botoes li{
-    display: inline-block;
-    list-style-type: none;
-    justify-content: center;
-    vertical-align: middle;
+header nav{
+    display: inline-flex;
 }
 header img{
     height: 8vh;
-    -webkit-padding-start: 0vh;
     border-radius: 1vh;
-    margin-left: 4vw;
+    margin-left: 3vw;
     margin-right: 33vw;
-    margin-bottom: 3vh;
 }
 header a{
-    vertical-align:bottom;
     text-decoration: none;
     color: green;
     font-size: 18px;
-    margin-left: 7vw;
+    margin-left: 5vw;
 }
 .title{
     color: rgb(194, 38, 194);
@@ -40,10 +34,6 @@ header a{
     background-color: green;
     padding: 10px 50px 10px 50px;
     border-radius: 10px;
-}
-h3{
-    margin-left: 7vw;
-    
 }
 h4{
     margin-left: 7vw;
