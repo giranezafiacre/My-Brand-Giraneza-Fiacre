@@ -5,8 +5,8 @@
 body{
     background-image: url(../Images/background1.jpg);
     background-repeat: no-repeat;
-    background-size: 109.9%;
-    background-position-x: -20vh;
+    background-size: cover;
+    overflow-x: hidden;
 }
 #botoes li{
     display: inline-block;
@@ -168,16 +168,16 @@ header a{
 }
 .black{
     background-color:black;
-    padding: 10vh;
-    margin-left: -10vw;
-    width: 103.39vw;
-    margin-right: -5.5vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-left: -5vw;
+    width: 110vw;
 }
 .black p{
     width: 30vw;
     color: white;
     text-align: center;
-    margin-left: 45vw;
+    margin-left: 40vw;
     font-size: 17px;
 }
 .black input{
@@ -186,7 +186,7 @@ header a{
     text-align: center;
 }
 .input{
-    margin-left: 40vw;
+    margin-left: 35vw;
     
 }
 
@@ -242,12 +242,18 @@ footer ul :first{
     
 }
 @media screen and (max-width: 450px){
+    html{
+        position: fixed;
+    }
     body{
-        background-size: cover,contain;
+        background-size: contain 100%;
+        background-color:rgb(255, 189, 67);
+        /* rgb(184, 184, 35); */
+        height: 100%;
     }
     .started{
         margin-left: -15vw;
-        margin-bottom: 0vh;
+        margin-bottom: 13vh;
     }
     .sideNav{
         visibility: hidden;
@@ -258,18 +264,19 @@ footer ul :first{
     header img{
         margin-right: 3vw;
     }
-    .images{
-        visibility: hidden;
-    }
+    
     .one{
         width: 70vw;
-        margin-top: 30vh;
+        margin-top: 10vh;
         line-height: 30px;
         margin-left: 10vw;
         font-size: 18px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-align: center;
         margin-bottom: 10vh;
+    }
+    .images{
+        visibility: hidden;
     }
     
     footer {
@@ -282,7 +289,9 @@ footer ul :first{
 
 @media screen and (max-width: 600px){
     body{
-        background-size: cover;
+        background-size: cover,contain;
+        width: 100%;
+        overflow-x: hidden;
     }
     header a{
         vertical-align:bottom;
@@ -313,73 +322,71 @@ footer ul :first{
         margin-top: 4vh;
         margin-left: 15vw;
     }
+    .down{
+        width: 120%;
+        position: absolute;
+        margin-left: -4vw;
+        overflow-x: hidden;
+    }
     .images{
-        margin-left: -3vw;
-        padding-right: 4.5vw;
+        width: inherit;
     }
     .images .summary{
         margin-right: 18.2vw;
         } 
+        .lastul{
+            margin-right: 10vw;
+        }
+        footer ul{
+            margin-left: 10vw;
+        }
     footer {
-        margin-right: -37vw;
-            margin-left: -4vw;
-            padding-right: 11vw;
+        width: inherit;
+        margin-left: -4vw;
             }
     .black{
-                margin-right: 0vw;
+        width: inherit;
                 
         }
  }
 @media screen and (max-width: 1000px){
-    
-    .images .summary{
-         margin-right: 7.35vw;
-         } 
-         footer {
-            margin-right: -6vw;
-            }
-            .black{
-                margin-right: -37vw;
-                
-        }
- }
-@media screen and (max-width: 1600px){
-    body{
-        background-position-x: 0vw;
-        background-position-y:20vh -20vh;
-        background-size: cover;
+
+    .down{
+        width: 120%;
+        margin-left: -4vw;
+        overflow-x: hidden;
+    }
+    .images{
+        width: inherit;
     }
     .images .summary{
          margin-right: 7.35vw;
          } 
-         .images{
-            padding-right: 5vw;
-         } 
-   footer{
-    padding-right: 11vw;
-   }
+         footer {
+            width: inherit;
+            }
+            .black{
+                width: inherit;
+                
+        }
  }
-@media screen and (max-width: 1695px){
-   .images .summary{
-        margin-right: 7.35vw;
-        } 
+@media screen and (max-width: 1600px){
+   .down{
+    width: 120%;
+    margin-left: -4vw;
+    overflow-x: hidden;
 }
-@media screen and (min-width: 1700px){
-    .images .summary{
-         margin-right: 6.87vw;
-         } 
-    footer {
-        margin-right: -4vw;
+.images{
+    width: inherit;
+}
+.images .summary{
+     margin-right: 7.35vw;
+     } 
+     footer {
+        width: inherit;
         }
         .black{
-            margin-right: -4vw;
-        }
+            width: inherit;
+            
+    }
  }
- @media screen and (min-width: 1710px,1705px){
-    .images .summary{
-         margin-right: 7.37vw;
-         } 
-    footer {
-        margin-right: -5.45vw;
-         }
- } 

@@ -66,3 +66,21 @@ h4{
 h1{
     text-align: center;
 }
+@media screen and (max-width: 790px){
+    header img{
+        margin-right: 20vw;
+        margin-left: -5vw;
+    }
+    header a{
+        margin-left: 3vw;
+    }
+} 
+@media screen and (max-width: 400px){
+    header img{
+        margin-right: 10vw;
+        margin-left: -5vw;
+    }
+    header a{
+        margin-left: 1vw;
+    }
+}
