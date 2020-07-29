@@ -249,13 +249,13 @@ p{
         margin-left: 5vw;
     } 
  }
- @media screen and (max-height:500px){
+ @media screen and (max-height:600px){
     .all{
         
-        height: 120vh;
+        height: 100vh;
         margin-bottom: 10vh;
     }
     .photocodes img{
-        height: 120vh;
+        height: 100vh;
     }
  }
