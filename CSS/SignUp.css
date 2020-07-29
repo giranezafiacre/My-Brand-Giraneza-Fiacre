@@ -82,3 +82,101 @@ header a{
     top: -15px; 
     transition: 0.2s ease-out;
 }
+@media screen and (max-width: 350px){
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -5vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+}
+@media screen and (max-width: 350px) and (max-width: 450px){
+    header{
+        margin-left: -14vw;
+    }
+    header img{
+        margin-right: 20vw;
+        margin-left: -10w;
+    }
+    header a{
+        margin-left: 2vw;
+    }
+    .all{
+        margin-left: 10vw;
+    }
+    .photocodes img{
+        visibility: hidden;
+        width: 0;
+    }
+    .input input{
+        width: 60vw;
+    }
+    .input a{
+        padding: 1.5vh 8vw 1.5vh 8vw;
+        margin-left: 25vw;
+    }
+    .dont{
+        text-align: center;
+    }
+ }
+ 
+@media screen and (max-width: 600px){
+    header img{
+        margin-right: 20vw;
+        margin-left: -10w;
+    }
+    header a{
+        margin-left: 2vw;
+    }
+    .photocodes img{
+        visibility: hidden;
+        width: 0;
+    }
+    .input input{
+        width: 60vw;
+    }
+    .input a{
+        padding: 1.5vh 8vw 1.5vh 8vw;
+        margin-left: 25vw;
+    }
+    .dont{
+        text-align: center;
+        margin-left: 20vw;
+    }
+ }
+ 
+@media screen and (max-width: 1000px){
+
+    header img{
+        margin-right: 20vw;
+        margin-left: 10vw;
+    }
+    header a{
+        margin-left: 6vw;
+    }
+ } 
+ @media screen and (max-height:600px){
+    .all{
+        
+        height: 140vh;
+        margin-bottom: 10vh;
+    }
+    .photocodes img{
+        height: 140vh;
+    }
+ }

@@ -22,11 +22,6 @@ header a{
     font-size: 18px;
     margin-left: 7vw;
 }
-.title{
-    color: rgb(194, 38, 194);
-    font-size: 18px;
-    margin-right: 10vw;
-}
 .pimg{
     margin-left: 7vw;
     display: inline-flex;
@@ -65,3 +60,81 @@ h4{
     margin-left: 30vw;
     margin-bottom: 20vh;
 }
+@media screen and (max-width: 450px){
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -20vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    .p a{
+        font-size: 15px;
+        display: inline-flex;
+        padding: 10px 20px 10px 20px
+    }
+    .blog{
+        display: flex;
+        margin-left: 10vw;
+    }
+    
+ } 
+ 
+ @media screen and (max-width: 600px){ 
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -20vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    .p a{
+        font-size: 15px;
+        display: inline-flex;
+        padding: 10px 20px 10px 20px
+    }
+    .blog{
+        display: flex;
+        margin-left: 10vw;
+    }
+    
+ }
+ 
+@media screen and (max-width: 1000px){
+
+    header img{
+        margin-right: 10vw;
+        margin-left: 10vw;
+    }
+    header a{
+        margin-left: 6vw;
+    }
+ } 

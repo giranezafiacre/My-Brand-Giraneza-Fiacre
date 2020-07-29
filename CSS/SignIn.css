@@ -5,6 +5,7 @@ body{
     background-color: white;
     background-repeat: no-repeat;
     background-size: cover;
+    justify-content: center;
 }
 
 #botoes li{
@@ -46,6 +47,7 @@ p{
     margin-bottom: 5vh;
 }
 .all{
+    justify-content: center;
     display: inline-flex;
     height: 60vh;
     background-color:rgb(24, 23, 23);
@@ -88,3 +90,172 @@ p{
     top: -15px; 
     transition: 0.2s ease-out;
 }
+
+@media screen and (max-width: 280px){
+    .all{
+        width: 80%;
+        height: 80%;
+        margin-left: 30vw;
+        padding-bottom: 5vh;
+    }
+}
+@media screen and (max-width: 450px){
+    .dont{
+        text-align: start;
+        width: 50%;
+   }
+   
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -5vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    p{
+        width: 70vw;
+        text-align: center;
+        margin-left: 3vw;
+        margin-bottom: 5vh;
+    }
+    .photocodes section{
+        width: 100%;
+    }
+    .all{
+        width: 80%;
+        margin-left: 30vw;
+        padding-bottom: 5vh;
+    }
+    .photocodes img{
+        visibility: hidden;
+        width: 0;
+    }
+    .input input{
+        width: 60vw;
+    }
+    .input a{
+        padding: 1.5vh 8vw 1.5vh 8vw;
+        margin-left: 25vw;
+    }
+    
+ }
+ 
+@media screen and (min-width: 450px) and (max-width: 600px){
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -5vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    p{
+        width: 70vw;
+        text-align: center;
+        margin-left: 3vw;
+        margin-bottom: 5vh;
+    }
+    .photocodes section{
+        width: 100%;
+    }
+    .all{
+        width: 80%;
+        margin-left: 30vw;
+        padding-bottom: 5vh;
+    }
+    .photocodes img{
+        visibility: hidden;
+        width: 0;
+    }
+    .input input{
+        width: 60vw;
+    }
+    .input a{
+        padding: 1.5vh 8vw 1.5vh 8vw;
+        margin-left: 25vw;
+    }
+    
+ }
+ 
+@media screen and (min-width:600px) and (max-width: 1000px){
+    
+    header img{
+        margin-right: 20vw;
+        margin-left: 10vw;
+    }
+    header a{
+        margin-left: 6vw;
+    }
+    .all{
+        height: 90vh;
+        margin-bottom: 10vh;
+    }
+    .photocodes img{
+        height: 90vh;
+    }
+    .photocodes section{
+        width: 40vw;
+    }
+    .dont{
+        margin-left: 5vw;
+    } 
+ }  
+ @media screen and (min-width:1000px){
+    /* header img{
+        margin-right: 20vw;
+        margin-left: 10vw;
+    }
+    header a{
+        margin-left: 6vw; */
+    /* } */
+    .all{
+        height: 75vh;
+        margin-bottom: 10vh;
+    }
+    .photocodes img{
+        height: 75vh;
+    }
+    .photocodes section{
+        width: 40vw;
+    }
+    .dont{
+        margin-left: 5vw;
+    } 
+ }
+ @media screen and (max-height:600px){
+    .all{
+        
+        height: 100vh;
+        margin-bottom: 10vh;
+    }
+    .photocodes img{
+        height: 100vh;
+    }
+ }
