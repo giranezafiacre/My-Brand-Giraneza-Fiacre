@@ -46,7 +46,10 @@ header a{
     width: 30vw;
 }
 .input input{
-    height: 9vh;
+    margin-top: 3vh;
+}
+.input input{
+    height: 5vh;
     border-radius: 1vh;
     width: 20vw;
     background-color:rgb(24, 23, 23);

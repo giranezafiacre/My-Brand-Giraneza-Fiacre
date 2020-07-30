@@ -66,6 +66,18 @@ h4{
 h1{
     text-align: center;
 }
+.qtitle{
+    margin-left: 3vw;
+}
+#botoes li{
+    display: inline-block;
+    list-style-type: none;
+    justify-content: center;
+    vertical-align: baseline;
+}
+#botoes{
+    margin-bottom: -10vh;
+}
 @media screen and (max-width: 790px){
     header img{
         margin-right: 20vw;

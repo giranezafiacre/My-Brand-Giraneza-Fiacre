@@ -60,7 +60,10 @@ p{
     width: 30vw;
 }
 .input input{
-    height: 9vh;
+    margin-top: 3vh;
+}
+.input input{
+    height: 5vh;
     border-radius: 1vh;
     background-color:rgb(24, 23, 23);
     color: rgb(196, 189, 189);
@@ -138,7 +141,7 @@ p{
     .all{
         width: 80%;
         margin-left: 30vw;
-        padding-bottom: 5vh;
+        padding-bottom: 8vh;
     }
     .photocodes img{
         visibility: hidden;
@@ -228,13 +231,6 @@ p{
     } 
  }  
  @media screen and (min-width:1000px){
-    /* header img{
-        margin-right: 20vw;
-        margin-left: 10vw;
-    }
-    header a{
-        margin-left: 6vw; */
-    /* } */
     .all{
         height: 75vh;
         margin-bottom: 10vh;
