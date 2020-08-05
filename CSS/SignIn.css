@@ -40,6 +40,17 @@ header a{
 .dont a{
     color: green;
 }
+.alert2{
+    text-align: center;
+    color: white;
+    width: 40%;
+    background-color: red;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    margin-left: 5vw;
+    overflow: visible;
+    display:none; 
+  }
 p{
     width: 26vw;
     text-align: center;

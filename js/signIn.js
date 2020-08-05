@@ -52,7 +52,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      window.alert("Error : " + errorMessage);
+      document.querySelector('.alert2').style.display = 'block';
+  // Hide alert after 3 seconds
+  setTimeout(function () {
+    document.querySelector('.alert2').style.display = 'none';
+  }, 3000);
     //   
     });
     

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignIn page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/signIn.css">
 </head>
 
@@ -26,12 +26,13 @@
             <section>
                 <p>To sign In is for registered users only if you have not registered before click on “Sign Up” link on
                     bottom of this form</p>
+                    <div class="alert2">not authenticated sign up first</div>
                 <div class="input">
                     <form id="loginForm" action="blogPage.html" method="post">
-                    <input id="email" class="form" type="email" placeholder="email:" required> <br>
-                    <input id="password" class="form3" type="password" placeholder="password: " required><br>
-                    <button type="submit">Login</button>
-                </form>
+                        <input id="email" class="form" type="email" placeholder="email:" required> <br>
+                        <input id="password" class="form3" type="password" placeholder="password: " required><br>
+                        <button type="submit">Login</button>
+                    </form>
                 </div><br>
                 <span class="dont">
                     <p>don't have an account?<a href="signUp.html">sign up</a></p>
