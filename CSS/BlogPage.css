@@ -23,29 +23,63 @@ header a{
     margin-left: 7vw;
 }
 .pimg{
-    margin-left: 7vw;
+    margin-left:  initial;
     display: inline-flex;
 }
 .p p{
     width: 60vw;
 }
-.p a{
+.feedbacks{
+    margin-top: 30vh;
+    display: inline-block;
+}
+.feedbacks a{
     text-decoration: none;
     color: white;
     background-color: green;
     padding: 10px 50px 10px 50px;
     border-radius: 10px;
 }
+#botoes2,#botoes1{
+    margin-left: -3vw;
+    margin-top: -13vh;
+}
+
+#botoes2 li,#botoes1 li{
+    display: inline;
+    list-style-type: none;
+    vertical-align: middle;
+}
+span{
+    display: inline;
+    white-space: initial;
+}
+.fimage{
+    height: 5vh;
+    
+}
+.like{
+    margin-bottom: 1vh;
+}
+.dislike{
+    margin-bottom: -1.3vh;
+}
+.p{
+    margin-bottom: -15%;
+}
 h3{
     margin-left: 7vw;
     
 }
 h4{
-    margin-left: 7vw;
+    margin-left: initial;
+    text-align: start;
 }
 .article{
     margin-bottom: 10vh;
+    margin-left: 7vw;
 }
+
 .blog >a{
     
     text-decoration: none;
@@ -82,10 +116,34 @@ h4{
         margin-left: 0vw;
         margin-right: -20vw;
     }
-    .p a{
-        font-size: 15px;
-        display: inline-flex;
-        padding: 10px 20px 10px 20px
+    .feedbacks{
+        margin-top: 30vh;
+        display: inline-block;
+        
+    }
+    .feedbacks a{
+        text-decoration: none;
+        color: white;
+        background-color: green;
+        padding: 10px 30px 10px 30px;
+        border-radius: 10px;
+        margin-bottom: 10vh;
+    }
+    #botoes2,#botoes1{
+        width: 160%;
+        position: relative;
+        margin-top: -7vh;
+        margin-left: -7.4vw;
+    }
+    #botoes2 li,#botoes1 li{
+        display: inline;
+        justify-content: start;
+    }
+    #botoes2 li:first-child,#botoes1 li:first-child{
+        margin-right: 0vw;
+    }
+    #botoes2 li:last-child,#botoes1 li:last-child{
+        margin-left: 0vw;
     }
     .blog{
         display: flex;
@@ -94,7 +152,7 @@ h4{
     
  } 
  
- @media screen and (max-width: 600px){ 
+ @media screen and (min-width: 450px) and (max-width: 600px){ 
     header{
         margin-right: -20vw;
         width: 150%;
@@ -116,10 +174,29 @@ h4{
         margin-left: 0vw;
         margin-right: -20vw;
     }
-    .p a{
-        font-size: 15px;
-        display: inline-flex;
-        padding: 10px 20px 10px 20px
+    .feedbacks a{
+        text-decoration: none;
+        color: white;
+        background-color: green;
+        padding: 10px 30px 10px 30px;
+        border-radius: 10px;
+        margin-bottom: 10vh;
+    }
+    #botoes2,#botoes1{
+        width: 160%;
+        position: relative;
+        margin-top: -7vh;
+        margin-left: -6.3vw;
+    }
+    #botoes2 li,#botoes1 li{
+        display: inline;
+        justify-content: start;
+    }
+    #botoes2 li:first-child,#botoes1 li:first-child{
+        margin-right: 0vw;
+    }
+    #botoes2 li:last-child,#botoes1 li:last-child{
+        margin-left: 0vw;
     }
     .blog{
         display: flex;
@@ -128,7 +205,7 @@ h4{
     
  }
  
-@media screen and (max-width: 1000px){
+@media screen and (min-width: 600px) and (max-width: 1000px){
 
     header img{
         margin-right: 10vw;
@@ -136,5 +213,9 @@ h4{
     }
     header a{
         margin-left: 6vw;
+    }
+    #botoes1,#botoes2{
+        margin-top: -7vh;
+        margin-left: -6.3vw;
     }
  } 
