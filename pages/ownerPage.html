@@ -7,6 +7,7 @@
     <title>Owner Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logo.jpg">
+    <link href="rich-text-editor.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/owner.css">
 </head>
 
@@ -35,8 +36,8 @@
                     <form id="post-form">
                         <center><h3>Make A Blog</h3></center>
                         <input type="text" id="title" placeholder="Title"><br>
-                        <textarea id="post" class="form-control" placeholder="What's on your mind..."></textarea>
-                        <input type="file" class="form-control" id="image" accept="images/*">
+                        <textarea id="post" placeholder="What's on your mind..."></textarea>
+                        <input type="file" id="image" accept="images/*">
                         <div class="text-center">
                             <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
                         </div>
@@ -57,7 +58,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-    <script src="../js/owner.js"></script>
+    <script src="../scripts/owner.js"></script>
+    <script src="rich-text-editor.min.js"></script>
 </body>
 
 </html>

@@ -49,11 +49,12 @@ header ul :first-child{
 .table .qtitle{
     margin-top: 5vh;
 }
-.table textarea{
+textarea{
     border-radius: 2vh;
     width: 70%;
     margin-top: 2vh;
     outline: none;
+    white-space: pre-wrap;
 }
 .table table{
     width: 86%;

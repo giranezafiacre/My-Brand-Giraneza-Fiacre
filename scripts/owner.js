@@ -10,6 +10,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+var editor = new RTE(document.querySelector('#post'));
 function upload() {
     //get your image
     var image = document.getElementById('image').files[0];
@@ -91,7 +92,13 @@ function getdata() {
                     i++;
 
         });
-        m+="</table></div>" 
+        m+="</table></div>" ;
+        snapshot.forEach(function (doc) {
+            m+="<div class='col-sm-4 mt-2 mb-1'>"+
+        "<div class='card'>"+
+        "<img src='"+doc.data().imageURL+"' style='height:250px;'>"+
+        "<div class='card-body'><p class='card-text'>"+doc.data().content+"</p>"+
+        "</div></div></div>"});
         posts_div.innerHTML=m;
     });
     db.collection("contacts").get().then(function (snapshot) {
