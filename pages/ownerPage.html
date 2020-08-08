@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../images/logo.jpg">
+    <link href="rich-text-editor.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/owner.css">
 </head>
 
@@ -22,52 +24,42 @@
     </header>
     <section>
         <div class="table">
-            <span>articles</span>
-            <table>
-                <tr>
-                    <td>title 1</td>
-                    <td>How someone can receive skills needed to succeed interview</td>
-                    <td><button><a href="">update</a></button></td>
-                    <td><button><a href="">Delete</a></button></td>
-                </tr>
-
-                <tr>
-                    <td>title 2</td>
-                    <td>share what you believe, do you believe in destiny or we are master of our fate?</td>
-                    <td><button><a href="">update</a></button></td>
-                    <td><button><a href="">Delete</a></button></td>
-                </tr>
-
-                <tr>
-                    <td>title 2</td>
-                    <td>how to write a CV properly?</td>
-                    <td><button><a href="">update</a></button></td>
-                    <td><button><a href="">Delete</a></button></td>
-                </tr>
-            </table>
+            
+                <span>articles</span>
+                <div id="articles">
+            
+            </div>
+            
             <span>write new Article:</span>
-            <textarea name="" id="" cols="30" rows="10"></textarea><br>
-
-            <div class="qtitle"><span>queries</span></div>
-            <table>
-                <tr>
-                    <td>query 1</td>
-                    <td>I tried your tip on interview but it didn’t work</td>
-                    <td><button><a href="">respond</a></button></td>
-                    <td><button><a href="">ignore</a></button></td>
-                </tr>
-
-                <tr>
-                    <td>query 2</td>
-                    <td>your CV tip helped me and I got a job because of it</td>
-                    <td><button><a href="">respond</a></button></td>
-                    <td><button><a href="">ignore</a></button></td>
-                </tr>
-            </table>
-            <div class="profile"><a href="">view profile picture</a></div>
+            <div class="card">
+                <div class="card-body">
+                    <form id="post-form">
+                        <center><h3>Make A Blog</h3></center>
+                        <input type="text" id="title" placeholder="Title"><br>
+                        <textarea id="post" placeholder="What's on your mind..."></textarea>
+                        <input type="file" id="image" accept="images/*">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
+                        </div>
+   
+                    </form>
+                 </div>
+   
+            </div>
+            <div class="qtitle"><span>messages</span></div>
+            <div id="message">
+                
+            </div>
+            
             
         </div>
     </section>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="../scripts/owner.js"></script>
+    <script src="rich-text-editor.min.js"></script>
 </body>
 
 </html>
