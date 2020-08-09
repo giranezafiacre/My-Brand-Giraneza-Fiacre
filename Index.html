@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="images/logo.jpg">
     <link rel="stylesheet" href="./css/index.css">
+
 </head>
 
 <body>
+
     <div class="body">
         <div class="container">
             <div id="header">
@@ -61,61 +64,95 @@
             <div class="started">
                 <a href="pages/signUp.html">JOIN ME NOW</a>
             </div>
+            
         </div>
 
         <div class="down">
-        <div class="black">
-            <p>There are some articles on this website that is seen by subscribed members only please sign Up
-            </p>
-            <br>
-            <div class="input">
-                <input id="username" class="form" type="text" value="" placeholder="Full names" required>
-                <input id="password" class="form" type="password" value="" placeholder="Email " required>
-                <a href="pages/signUp.html">SUBMIT</a>
-            </div>
-        </div>
+            <div class="black">
+                <div class="alert2">saved successfully</div>
+                <p>to see articles on this website first fill your contact in form below
+                </p>
 
-          <section>
-            <div class="images">
-                <div class="summary">
-                    <img src="images/Pen.jpg" alt="" srcset=""><br>
-                    <p>In this website we shall share many skills,conversation and new updates please make sure to
-                        learn
-                        as
-                        may
-                        things as possible, see you soon in topic we shall see</p>
+                <br>
+                <div class="input">
+                    <form id="contactForm2" action="" method="POST">
+                        <input id="fullname2" class="form" type="text" value="" placeholder="Full names:" required>
+                        <input id="email2" class="form" type="email" value="" placeholder="email" required>
+                        <input id="phone2" class="form" type="phone" value="" placeholder="phone" required><br>
+                        <textarea id="message2" cols="30" rows="10" placeholder="put a message you want...." required></textarea><br>
+                        <button type="submit">SUBMIT</button> 
+                        
+                    </form>
+
+
                 </div>
-                <div class="summary"><img src="images/Conversation.jpg" alt="" srcset=""><br>
+            </div>
+            <div class="photocodes">
+
+                <section>
+                    <div class="input">
+                        <h3>Contact Form</h3>
+                        <div class="alert">saved successfully</div>
+                        <form id="contactForm" action="./pages/signUp.html" method="post">
+                            <input id="fullname" type="text" placeholder="Full names:" required>
+                            <br>
+                            <input id="email" type="text" placeholder="email" required><br>
+                            <input id="phone" type="phone" placeholder="phone" required><br>
+                            <textarea id="message" cols="30" rows="10" placeholder="put a message you want...."></textarea><br>
+                            <button type="submit">SUBMIT</button>
+                        </form>
+
+
+                    </div>
                     <br>
-                    <p>Through communication Each one of us can learn from other that’s why I created way to share
-                        your
-                        camments,advice or suggestion so that this website can be more productive day by day</p>
-                </div>
-                <div class="summary">
-                    <img src="images/Books.jpg" alt="" srcset=""><br>
-                    <p>As we all know the source of knowledge and skills are found in books of some pionneers that’s
-                        why
-                        we
-                        will use
-                        help of them so that we can share true informations</p>
-                </div>
+                    <span class="dont" id="dont">have account already?<a href="signIn.html">Login</a></span>
+                </section>
             </div>
+            <section>
+                <div class="images">
+                    <div class="summary">
+                        <img src="images/Pen.jpg" alt="" srcset=""><br>
+                        <p>In this website we shall share many skills,conversation and new updates please make sure to
+                            learn
+                            as
+                            may
+                            things as possible, see you soon in topic we shall see</p>
+                    </div>
+                    <div class="summary"><img src="images/Conversation.jpg" alt="" srcset=""><br>
+                        <br>
+                        <p>Through communication Each one of us can learn from other that’s why I created way to share
+                            your
+                            camments,advice or suggestion so that this website can be more productive day by day</p>
+                    </div>
+                    <div class="summary">
+                        <img src="images/Books.jpg" alt="" srcset=""><br>
+                        <p>As we all know the source of knowledge and skills are found in books of some pionneers that’s
+                            why
+                            we
+                            will use
+                            help of them so that we can share true informations</p>
+                    </div>
+                </div>
 
 
-          </section>
-            
-        <footer>
-            <div class="same">
-                <nav>
-                    <ul><a href="#"><img src="images/arrow.JPG" alt="" srcset=""></a></ul>
-                    <ul><a href="pages/contactPage.html">About me</a></ul>
-                    <ul class="lastul"><a href="pages/blogPage.html">Blog</a></ul>
-                </nav>
-            </div>
+            </section>
 
-        </footer>
+            <footer>
+                <div class="same">
+                    <nav>
+                        <ul><a href="#"><img src="images/arrow.JPG" alt="" srcset=""></a></ul>
+                        <ul><a href="pages/contactPage.html">About me</a></ul>
+                        <ul class="lastul"><a href="pages/blogPage.html">Blog</a></ul>
+                    </nav>
+                </div>
+
+            </footer>
+        </div>
     </div>
-    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="./scripts/fireInit.js"></script>
+    <script src="./scripts/fIndex.js" type="text/javascript"></script>
 </body>
 
 </html>

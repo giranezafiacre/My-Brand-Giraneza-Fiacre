@@ -6,34 +6,36 @@ body{
     background-position: top;
     position: relative;
 }
-header nav{
-    display: inline-flex;
+#botoes li{
+    display: inline-block;
+    list-style-type: none;
+    justify-content: center;
+    vertical-align: middle;
 }
 header img{
     height: 8vh;
+    -webkit-padding-start: 0vh;
     border-radius: 1vh;
-    margin-left: -5vw;
-    margin-right: 8.8vw;
+    margin-left: 4vw;
+    margin-right: 33vw;
+    margin-bottom: 3vh;
 }
 header a{
+    vertical-align:bottom;
     text-decoration: none;
     color: green;
+    font-size: 18px;
+    margin-left: 7vw;
 }
 .title{
     color: rgb(223, 25, 223);
 }
-header ul{
-    margin-left: 7.5vw;
-    font-size: 18px;
-}
-header ul :first-child{
-    justify-self: start;
-    
-}
+
 .table{
     margin-top: 10vh;
+    margin-bottom: 10vh;
     border-radius: 2.5vh;
-    background-color: grey;
+    background-color: rgb(247, 247, 141);
     padding: 2vh;
 }
 
@@ -49,21 +51,48 @@ header ul :first-child{
 .table .qtitle{
     margin-top: 5vh;
 }
-.table textarea{
+textarea{
     border-radius: 2vh;
     width: 70%;
+    height: 50vh;
     margin-top: 2vh;
     outline: none;
+    white-space: pre-wrap;
+}
+#text-center button{
+    margin-left: 2vw;
+    background-color: white;
+    padding-top: 1vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
+    padding-right: 2vw;
+    border-color: black;
+    border-radius: 1vh;
 }
 .table table{
     width: 86%;
     margin-top: 2vh;
     margin-left: 10%;
+    margin-right: 10%;
 }
 table a{
     text-decoration: none;
     color: black;
     
+}
+#p{
+    height: max-content;
+}
+.card{
+    margin-left: 2vw;
+    margin-top: 3vh;
+}
+.card #title{
+    width: 70%;
+    height: 5vh;
+    border-radius: 2vh;
+    border: groove;
+    outline: none;
 }
 table tr{
     margin-top: 3vh;
@@ -97,3 +126,72 @@ table button{
     padding-right: 2vw;
     border-radius: 1vh;
 }
+@media screen and (max-width: 450px){
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -20vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    .table{
+        width: 270%;
+    }
+    
+ } 
+ 
+ 
+ @media screen and (min-width: 450px) and (max-width: 600px){ 
+    header{
+        margin-right: -20vw;
+        width: 150%;
+    }
+    #botoes{
+        width: 100%;
+        position: relative;
+    }
+    #botoes li{
+        display: inline-block;
+        margin-left: 10vw;
+        justify-content: start;
+    }
+    #botoes li:first-child{
+        margin-right: -10vw;
+        margin-left: -20vw;
+    }
+    #botoes li:last-child{
+        margin-left: 0vw;
+        margin-right: -20vw;
+    }
+    .table{
+        width: 270%;
+    }
+ }
+ 
+@media screen and (min-width: 600px) and (max-width: 1000px){
+
+    header img{
+        margin-right: 10vw;
+        margin-left: 10vw;
+    }
+    header a{
+        margin-left: 6vw;
+    }
+    .table{
+        width: 270%;
+    }
+ } 

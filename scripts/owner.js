@@ -1,0 +1,348 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyB1EP4V7vfQbBAV5okPq4K8J9fEhR_zqkU",
+    authDomain: "contactform-11c23.firebaseapp.com",
+    databaseURL: "https://contactform-11c23.firebaseio.com",
+    projectId: "contactform-11c23",
+    storageBucket: "contactform-11c23.appspot.com",
+    messagingSenderId: "902006572724",
+    appId: "1:902006572724:web:47f0378bd4eb43984b79e1"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+function upload() {
+    //get your image
+    var image = document.getElementById('image').files[0];
+    //get your blog text
+    var post = document.getElementById('post').value;
+    var title = document.getElementById('title').value
+    //get image name
+    var imageName;
+    if (image == null) {
+        firebase.firestore().collection("posts").doc().set({
+            content: post,
+            title: title,
+            likes: 0,
+            dislikes: 0,
+            comments: {
+                name: '',
+                suggestion: ''
+            },
+            imageURL: ''
+        }).then(function (error) {
+            if (error) {
+                alert("Error while uploading");
+            } else {
+                alert("Successfully uploaded");
+                //now reset your form
+                document.getElementById('post-form').reset();
+                getdata();
+            }
+        });
+    } else {
+        imageName = image.name;
+
+
+        //firebase storage reference
+        //it is the path where your image will be stored
+        var storageRef = firebase.storage().ref().child('images/' + imageName);
+        //upload image to selected storage reference
+        //make sure you pass image here
+        var uploadTask = storageRef.put(image);
+        //to get the state of image uploading....
+        uploadTask.on('state_changed', function (snapshot) {
+            //get task progress by following code
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("upload is " + progress + " done");
+        }, function (error) {
+            //handle error here
+            console.log(error.message);
+        }, function () {
+            //handle successfull upload here..
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                //get your image download url here and upload it to databse
+                //our path where data is stored ...push is used so that every post have unique id
+
+                firebase.firestore().collection("posts").doc().set({
+                    content: post,
+                    title: title,
+                    likes: 0,
+                    dislikes: 0,
+                    comments: [],
+                    imageURL: downloadURL
+                }).then(function (error) {
+                    if (error) {
+                        alert("Error while uploading");
+                    } else {
+                        alert("Successfully uploaded");
+                        //now reset your form
+                        document.getElementById('post-form').reset();
+                        getdata();
+                    }
+                });
+            });
+        });
+    }
+
+}
+var key1
+window.onload = function () {
+    this.getdata();
+}
+function logout(){
+    firebase.auth().signOut();
+  }
+function getdata() {
+    var head = document.getElementById('head');
+    var blog = document.getElementById('blog');
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                "<li><a href='contactPage.html'>About me</a></li>" +
+                "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>" +
+                "<li><a href='signUp.html'>SignUp</a></li>";
+        } else {
+            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                "<li><a href='contactPage.html'>About me</a></li>" +
+                "<li><a href='signIn.html'>SignIn</a></li>" +
+                "<li><a href='signUp.html'>SignUp</a></li>";
+        }
+    });
+    db.collection("posts").get().then(function (snapshot) {
+        //get your posts div
+        var posts_div = document.getElementById('articles');
+        var blogposts = document.getElementById('all');
+        //remove all remaining data in that div
+        let i = 1;
+        var m, p;
+        m = "<div class='m'><table>";
+        p = "<h3 >recent Articles</h3>";
+        snapshot.forEach(function (doc) {
+            var len = 0;
+            for (var count in doc.data().comments) {
+                len++;
+            }
+            key1 = doc.id;
+            m += "<tr><td>title " + i + "</td>" +
+                "<td>" + doc.data().title + "</td>" +
+                "<td><button onclick='update_area(" + doc.id + ")'>update</button></td>" +
+                "<td><button id='" + doc.id + "' onclick='delete_post(" + doc.id + ")'>Delete</button></td></tr>";
+            p += "<h4 id='h4'>" + doc.data().title + "</h4>" +
+                "<div class='pimg'>" +
+                "<div class='p'>" +
+                "<p>" + doc.data().content.split(' ').splice(0, 30).join(' ') + "</p>" +
+                "<p>" + doc.data().content.split(' ').splice(31, 45).join(' ') + "</p>" +
+                " </div>" +
+                "<div class='p'>" +
+                "<img src='" + doc.data().imageURL + "' alt='' srcset=''>" +
+                "</div>" +
+                "</div>" +
+                "<br>" +
+                "<div class='feedbacks'>" +
+                "<ul id='botoes1'>" +
+                "<li><a onclick='readmore(" + doc.id + ")'>READ MORE</a></li>" +
+                "<li><span>comments :" + len + " &nbsp;</span></li>" +
+                "<li><span id='" + doc.id + "' onclick='updatelike(" + doc.id + ")'><img class='fimage like' src='../images/like.png' alt='' srcset=''></button></span></li>" +
+                "<li>" + doc.data().likes + " &nbsp;</li>" +
+                "<li><span onclick='updatedislike(" + doc.id + ")'><img class='fimage dislike' src='../images/dislike.png' alt='' srcset=''></span></li>" +
+                "<li>" + doc.data().dislikes + "</li>" +
+                "</ul>" +
+                "</div>" +
+                "</div>" +
+                "<br>";
+            i++;
+
+        });
+        m += "</table></div>";
+        p += "</div>"
+        if (posts_div) {
+            posts_div.innerHTML = m;
+        } else if (blogposts) {
+            blogposts.innerHTML = p;
+        }
+
+
+    });
+    db.collection("contacts").get().then(function (snapshot) {
+        //get your posts div
+        var contacts_div = document.getElementById('message');
+        //remove all remaining data in that div
+        var el1;
+        let i = 1;
+        el1 = "<table>";
+        snapshot.forEach(function (doc) {
+            el1 += "<tr>" +
+                "<td>" + doc.data().fullname + "</td>" +
+                "<td>" + doc.data().email + "</td>" +
+                "<td>" + doc.data().message + "</td>" +
+                "<td>" + doc.data().location + "</td>" +
+                "</tr>";
+
+        });
+        el1 += "</table>";
+        if (contacts_div) {
+            contacts_div.innerHTML = el1;
+        }
+
+    });
+
+}
+
+function delete_post(key) {
+    var docs1 = key.id.toString();
+    console.log(key.id);
+    db.collection('posts').doc(docs1).delete();
+    getdata();
+
+}
+function update_area(key) {
+    document.getElementById('post-form').reset();
+    var element = document.getElementById('title');
+    element.parentNode.removeChild(element);
+    var element1 = document.getElementById('post');
+    element1.parentNode.removeChild(element1);
+    var element2 = document.getElementById('image');
+    element2.parentNode.removeChild(element2);
+    var element3 = document.getElementById('text-center');
+    element3.parentNode.removeChild(element3)
+    console.log(document.getElementById('post-form').value);
+    var posts_div = document.getElementById('post-form');
+    var key1 = key.id.toString();
+    db.collection("posts").doc(key1).get().then(function (doc) {
+        console.log(doc.data().content);
+        posts_div.innerHTML = "<input type='text' id='title' placeholder='Title' value='" + doc.data().title + "'><br>" +
+            "<textarea id='post' placeholder='What's on your mind...'>" + doc.data().content + "</textarea>" +
+            "<div id='text-center' class='text-center'>" +
+            "<button type='button' class='btn btn-success' onclick='update_post(" + key1 + ")'>Update</button>" +
+            "</div>" + posts_div.innerHTML;
+    });
+
+}
+function update_post(key) {
+    var docs1 = key.id.toString();
+    console.log(document.getElementById('post').value);
+    db.collection('posts').doc(docs1).update({
+        content: document.getElementById('post').value,
+        title: document.getElementById('title').value
+    });
+    getdata();
+}
+
+function updatelike(key) {
+    // 
+    var docs1 = key.id.toString();
+    db.collection("posts").doc(docs1).get().then(function (doc) {
+        var likes = doc.data().likes;
+        console.log(likes);
+        db.collection('posts').doc(docs1).update({
+            likes: likes + 1
+        });
+        getdata();
+    });
+
+
+}
+function updatedislike(key) {
+    // 
+    var docs1 = key.id.toString();
+    db.collection("posts").doc(docs1).get().then(function (doc) {
+        var dislikes = doc.data().dislikes;
+        console.log(dislikes);
+        db.collection('posts').doc(docs1).update({
+            dislikes: firebase.firestore.FieldValue.increment(1)
+        });
+        getdata();
+    });
+
+}
+
+function readmore(key) {
+    var key1;
+    console.log(key);
+    if (typeof key === 'string') {
+        key1 = key;
+    } else {
+        key1 = key.id.toString();
+    }
+    if (document.querySelector('#all')) {
+        document.querySelector('#all').style.display = 'none';
+    }
+
+    var art_div = document.getElementById('few');
+    console.log(key1);
+    if (key1) {
+        db.collection("posts").doc(key1).get().then(function (doc) {
+            var comments = doc.data().comments;
+            var m = "<h1>" + doc.data().title + "</h1>" +
+                "<div class='pimg9'>" +
+
+                "<div class='p9'>" +
+                "<p>" + doc.data().content.split(' ').splice(0, 15).join(' ') + "</p>" +
+                "</div>" +
+                "<div class='p9'>" +
+                "<img src='" + doc.data().imageURL + "' alt='' srcset=''>" +
+                "</div>" +
+                "</div>" +
+
+                "<div id='p'><p>" + doc.data().content.split(' ').splice(15).join(' ') + "</p></div><br>" +
+                "<div id='other9' class='other9'>" +
+                "<span>is there any suggestion,comment or question you have?</span><br>" +
+                "<div class='comment9'>" +
+                "<input id='authorname' placeholder='your name'><br>" +
+                "<textarea name='' id='text1' cols='70' rows='10'></textarea><br>" +
+                "<button id='" + key1 + "' onclick='saveComment(" + key1 + ")'>comment:</button>" +
+                "</div> </div>" +
+                "<br>" +
+                "<div id='prev' class='other9'>" +
+                "<div class='qtitle9'><span>previous comments</span></div>";
+
+            for (let i = 0; i < comments.length; i++) {
+                m += "<ul id='botoes9'>" +
+                    "<li>" +
+                    "<h5>" + comments[i].name + ":</h5>" +
+                    "</li>" +
+                    " <li>" + comments[i].suggestion + "</li>" +
+                    "</ul>";
+            }
+
+
+            m += "</div></div>";
+            art_div.innerHTML = m;
+        });
+    } else {
+        alert('no item selected');
+        window.location.href = 'blogPage.html';
+    }
+}
+function saveComment(k) {
+    firebase.auth().onAuthStateChanged(function (user) {
+
+        if (user) {
+            var user1 = firebase.auth().currentUser;
+            console.log(user1);
+            if (user1 != null) {
+                let key1 = k.id.toString();
+                db.collection("posts").doc(key1).get().then(function (doc) {
+                    var m = [];
+                    m = doc.data().comments;
+                    var com = {
+                        name: document.getElementById('authorname').value,
+                        suggestion: document.getElementById('text1').value
+                    };
+                    readmore(key1);
+                    console.log(m);
+                    m.push(com);
+                    db.collection('posts').doc(k.id.toString()).update({
+                        comments: m
+                    });
+                });
+                console.log(k);
+            } else {
+                alert('not authorized');
+            }
+        } else {
+            alert('not authorized');
+        }
+
+    });
+}
