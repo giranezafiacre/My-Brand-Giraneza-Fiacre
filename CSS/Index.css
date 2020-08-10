@@ -286,7 +286,7 @@ footer ul :first{
     visibility: hidden;
     display: inline-flex;
     justify-content: center;
-    height: 84vh;
+    height: max-content;
     background-color:rgb(24, 23, 23);
     color: rgb(196, 190, 190);
     top: 30vh;
@@ -393,7 +393,7 @@ transition: 0.2s ease-out;
     visibility: visible;
     display: inline-flex;
     justify-content: center;
-    height: 550px;
+    height: max-content;
     width: 90%;
     top: 600px;
     margin-top: 90vh;
