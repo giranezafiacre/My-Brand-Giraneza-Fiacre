@@ -49,18 +49,18 @@ const saveMessage = (fullname, email, phone,message) => {
       console.error("Error writing document: ", error);
     });
 }
-// /////////////////////
-
-
-const successCallback = () => {
-fetch(
-  `http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query`
-)
-.then((response) => response.json())
-.then((response) => {
-  userLocation = response.countryCode+' '+response.timezone;
-});
-
+const successCallback = (position) => {
+  const {
+    latitude,
+    longitude
+  } = position.coords;
+  fetch(
+      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=cfb0503a9e62446bab7748c982c3ea65`
+    )
+    .then((response) => response.json())
+    .then((response) => {
+      userLocation = response["results"][0]["formatted"];
+    });
 };
 
 if (navigator.geolocation) {
@@ -68,33 +68,34 @@ if (navigator.geolocation) {
 } else {
   alert("Geolocation is not supported");
 }
+// /////////////////////
 
-// Listen for form submit
+
+
 document.getElementById('contactForm2').addEventListener('submit', submitForm2);
 
-// Submit form
+
 function submitForm2(e) {
-  e.preventDefault();
-
-  // Get values
-  var fullname2 = getInputVal('fullname2');
-  var email2 = getInputVal('email2');
-  var phone2 = getInputVal('phone2');
-  var message2=getInputVal('message2')
-
-  // Save message
-  saveMessage(fullname2, email2, phone2,message2);
-
-  // Show alert
-  document.querySelector('.alert2').style.display = 'block';
-  // Hide alert after 3 seconds
-  setTimeout(function () {
-    document.querySelector('.alert2').style.display = 'none';
-  }, 3000);
-
-  // Clear form
-  document.getElementById('contactForm2').reset();
-}
-
+    e.preventDefault();
+  
+    // Get values
+    var fullname2 = getInputVal('fullname2');
+    var email2 = getInputVal('email2');
+    var phone2 = getInputVal('phone2');
+    var message2=getInputVal('message2')
+  
+    // Save message
+    saveMessage(fullname2, email2, phone2,message2);
+  
+    // Show alert
+    document.querySelector('.alert2').style.display = 'block';
+    // Hide alert after 3 seconds
+    setTimeout(function () {
+      document.querySelector('.alert2').style.display = 'none';
+    }, 3000);
+  
+    // Clear form
+    document.getElementById('contactForm2').reset();
+  }
 
 
