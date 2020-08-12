@@ -67,10 +67,25 @@ span{
 .p{
     margin-bottom: -15%;
 }
-h3{
-    margin-left: 7vw;
-    
-}
+.alert1,.alert2{
+    text-align: center;
+    color: white;
+    width: 10%;
+    background-color: green;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    display:none;
+  }
+  .error{
+    text-align: center;
+    color: white;
+    width: 10%;
+    background-color: red;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    display:none;
+  }
+
 h4{
     margin-left: initial;
     text-align: start;

@@ -10,6 +10,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+
 function upload() {
     //get your image
     var image = document.getElementById('image').files[0];
@@ -31,10 +32,18 @@ function upload() {
             imageURL: ''
         }).then(function (error) {
             if (error) {
-                alert("Error while uploading");
+                document.querySelector('.error').innerHTML='Error while uploading'
+                document.querySelector('.error').style.display = 'block';
+                // Hide alert after 3 seconds
+                setTimeout(function () {
+                    document.querySelector('.error').style.display = 'none';
+                }, 3000);
             } else {
-                alert("Successfully uploaded");
-                //now reset your form
+                document.querySelector('.alert1').style.display = 'block';
+                // Hide alert after 3 seconds
+                setTimeout(function () {
+                    document.querySelector('.alert1').style.display = 'none';
+                }, 3000);
                 document.getElementById('post-form').reset();
                 getdata();
             }
@@ -53,10 +62,8 @@ function upload() {
         uploadTask.on('state_changed', function (snapshot) {
             //get task progress by following code
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("upload is " + progress + " done");
         }, function (error) {
             //handle error here
-            console.log(error.message);
         }, function () {
             //handle successfull upload here..
             uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
@@ -72,12 +79,21 @@ function upload() {
                     imageURL: downloadURL
                 }).then(function (error) {
                     if (error) {
-                        alert("Error while uploading");
+                        document.querySelector('.error').innerHTML="Error while uploading";
+                        document.querySelector('.error').style.display = 'block';
+                        setTimeout(function () {
+                            document.querySelector('.error').style.display = 'none';
+                        }, 3000);
                     } else {
-                        alert("Successfully uploaded");
                         //now reset your form
-                        document.getElementById('post-form').reset();
+                        document.querySelector('.alert2').innerHTML="Successfully uploaded";
+                        document.querySelector('.alert2').style.display = 'block';
+                        setTimeout(function () {
+                            document.querySelector('.alert2').style.display = 'none';
+                            document.getElementById('post-form').reset();
                         getdata();
+                        }, 3000);
+                        
                     }
                 });
             });
@@ -86,26 +102,30 @@ function upload() {
 
 }
 var key1
+
 window.onload = function () {
     this.getdata();
 }
-function logout(){
+function logout() {
     firebase.auth().signOut();
-  }
+}
+
 function getdata() {
     var head = document.getElementById('head');
     var blog = document.getElementById('blog');
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                "<li><a href='contactPage.html'>About me</a></li>" +
-                "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>" +
-                "<li><a href='signUp.html'>SignUp</a></li>";
-        } else {
-            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                "<li><a href='contactPage.html'>About me</a></li>" +
-                "<li><a href='signIn.html'>SignIn</a></li>" +
-                "<li><a href='signUp.html'>SignUp</a></li>";
+        if (head) {
+            if (user) {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>";
+                blog.innerHTML = "<a href='signIn.html' onclick='logout()'>Logout</a>";
+            } else {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html'>SignIn</a></li>";
+                blog.innerHTML = "<a href='signIn.html' >Login</a>"
+            }
         }
     });
     db.collection("posts").get().then(function (snapshot) {
@@ -115,7 +135,7 @@ function getdata() {
         //remove all remaining data in that div
         let i = 1;
         var m, p;
-        m = "<div class='m'><table>";
+        m = "<div class='m' id='m'><table>";
         p = "<h3 >recent Articles</h3>";
         snapshot.forEach(function (doc) {
             var len = 0;
@@ -190,12 +210,19 @@ function getdata() {
 
 function delete_post(key) {
     var docs1 = key.id.toString();
-    console.log(key.id);
+    console.log(docs1)
     db.collection('posts').doc(docs1).delete();
     getdata();
 
 }
+var art = document.getElementById("articles1");
+var create = document.getElementById("create");
+var message1 = document.getElementById("messages");
 function update_area(key) {
+    document.getElementById('articles').style.display = 'none';
+    document.getElementById('qtitle').style.display = 'none';
+    document.getElementById('card').style.display = 'block';
+    document.getElementById('message').style.display = 'none';
     document.getElementById('post-form').reset();
     var element = document.getElementById('title');
     element.parentNode.removeChild(element);
@@ -204,12 +231,10 @@ function update_area(key) {
     var element2 = document.getElementById('image');
     element2.parentNode.removeChild(element2);
     var element3 = document.getElementById('text-center');
-    element3.parentNode.removeChild(element3)
-    console.log(document.getElementById('post-form').value);
+    element3.parentNode.removeChild(element3);
     var posts_div = document.getElementById('post-form');
     var key1 = key.id.toString();
     db.collection("posts").doc(key1).get().then(function (doc) {
-        console.log(doc.data().content);
         posts_div.innerHTML = "<input type='text' id='title' placeholder='Title' value='" + doc.data().title + "'><br>" +
             "<textarea id='post' placeholder='What's on your mind...'>" + doc.data().content + "</textarea>" +
             "<div id='text-center' class='text-center'>" +
@@ -220,12 +245,25 @@ function update_area(key) {
 }
 function update_post(key) {
     var docs1 = key.id.toString();
-    console.log(document.getElementById('post').value);
     db.collection('posts').doc(docs1).update({
         content: document.getElementById('post').value,
         title: document.getElementById('title').value
+    }).then(function () {
+        document.querySelector('.alert2').style.display = 'block';
+        // Hide alert after 3 seconds
+        setTimeout(function () {
+            document.querySelector('.alert2').style.display = 'none';
+            location.reload();
+        }, 3000);
+
+    }).catch(function (error) {
+        document.querySelector('.error').style.display = 'block';
+        setTimeout(function () {
+            document.querySelector('.error').style.display = 'none';
+            location.reload();
+        }, 3000);
     });
-    getdata();
+
 }
 
 function updatelike(key) {
@@ -233,7 +271,6 @@ function updatelike(key) {
     var docs1 = key.id.toString();
     db.collection("posts").doc(docs1).get().then(function (doc) {
         var likes = doc.data().likes;
-        console.log(likes);
         db.collection('posts').doc(docs1).update({
             likes: likes + 1
         });
@@ -247,7 +284,6 @@ function updatedislike(key) {
     var docs1 = key.id.toString();
     db.collection("posts").doc(docs1).get().then(function (doc) {
         var dislikes = doc.data().dislikes;
-        console.log(dislikes);
         db.collection('posts').doc(docs1).update({
             dislikes: firebase.firestore.FieldValue.increment(1)
         });
@@ -288,7 +324,9 @@ function readmore(key) {
                 "<div id='other9' class='other9'>" +
                 "<span>is there any suggestion,comment or question you have?</span><br>" +
                 "<div class='comment9'>" +
-                "<input id='authorname' placeholder='your name'><br>" +
+                "<div class='alert1'>Successfully uploaded</div>"+
+                "<div class='alert2'>Successfully updated</div>"+
+                "<div class='error'>error accured</div>" +
                 "<textarea name='' id='text1' cols='70' rows='10'></textarea><br>" +
                 "<button id='" + key1 + "' onclick='saveComment(" + key1 + ")'>comment:</button>" +
                 "</div> </div>" +
@@ -310,39 +348,125 @@ function readmore(key) {
             art_div.innerHTML = m;
         });
     } else {
-        alert('no item selected');
         window.location.href = 'blogPage.html';
     }
 }
 function saveComment(k) {
     firebase.auth().onAuthStateChanged(function (user) {
-
         if (user) {
+
             var user1 = firebase.auth().currentUser;
-            console.log(user1);
             if (user1 != null) {
-                let key1 = k.id.toString();
-                db.collection("posts").doc(key1).get().then(function (doc) {
-                    var m = [];
-                    m = doc.data().comments;
-                    var com = {
-                        name: document.getElementById('authorname').value,
-                        suggestion: document.getElementById('text1').value
-                    };
-                    readmore(key1);
-                    console.log(m);
-                    m.push(com);
-                    db.collection('posts').doc(k.id.toString()).update({
-                        comments: m
+                console.log('hi', user1.email);
+                db.collection("users").where("email", "==", user1.email)
+                    .get()
+                    .then(function (querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            let key1 = k.id.toString();
+                            let uname=doc.data().username;
+                            db.collection("posts").doc(key1).get().then(function (doc) {
+                                var m = [];
+                                m = doc.data().comments;
+                                var com = {
+                                    name: uname,
+                                    suggestion: document.getElementById('text1').value
+                                };
+                                readmore(key1);
+                                m.push(com);
+                                db.collection('posts').doc(k.id.toString()).update({
+                                    comments: m
+                                });
+                            });
+                        });
+                    }).catch(function (error) {
                     });
-                });
-                console.log(k);
+
+
             } else {
-                alert('not authorized');
+                document.querySelector('.error').innerHTML="not authorized";
+                document.querySelector('.error').style.display = 'block';
+                setTimeout(function () {
+                    document.querySelector('.error').style.display = 'none';
+                getdata();
+                }, 3000);
             }
         } else {
-            alert('not authorized');
-        }
+            document.querySelector('.error').innerHTML="not authorized";
+                document.querySelector('.error').style.display = 'block';
+                setTimeout(function () {
+                    document.querySelector('.error').style.display = 'none';
+                getdata();
+                }, 3000);
+            }
 
     });
 }
+
+
+art.addEventListener('click', () => {
+    create.style.color = 'black';
+    art.style.color = 'rgb(223, 25, 223)';
+    message1.style.color = 'black';
+    //     art.style.backgroundColor= 'green';
+    // create.style.backgroundColor= 'rgb(184, 184, 184)';
+    // message1.style.backgroundColor='rgb(184, 184, 184)';
+    document.getElementById('articles').style.display = 'block';
+    document.getElementById('qtitle').style.display = 'none';
+    document.getElementById('card').style.display = 'none';
+    document.getElementById('message').style.display = 'none';
+});
+
+create.addEventListener('click', () => {
+    create.style.color = 'rgb(223, 25, 223)';
+    art.style.color = 'black';
+    message1.style.color = 'black';
+    // create.style.backgroundColor= 'green';
+    // art.style.backgroundColor= 'rgb(184, 184, 184)';
+    // message1.style.backgroundColor='rgb(184, 184, 184)';
+    document.getElementById('articles').style.display = 'none';
+    document.getElementById('qtitle').style.display = 'none';
+    document.getElementById('card').style.display = 'block';
+    document.getElementById('message').style.display = 'none';
+});
+
+message1.addEventListener('click', () => {
+    create.style.color = 'black';
+    art.style.color = 'black';
+    message1.style.color = 'rgb(223, 25, 223)';
+    // message1.style.backgroundColor= 'green';
+    //     art.style.backgroundColor= 'rgb(184, 184, 184)';
+    //     create.style.backgroundColor= 'rgb(184, 184, 184)';
+    document.getElementById('articles').style.display = 'none';
+    document.getElementById('qtitle').style.display = 'none';
+    document.getElementById('card').style.display = 'none';
+    document.getElementById('message').style.display = 'block';
+});
+art.addEventListener('mouseenter', () => {
+    art.style.color = 'white';
+    create.style.color = 'black';
+    message1.style.color = 'black';
+    art.style.backgroundColor = 'green';
+    create.style.backgroundColor = 'rgb(184, 184, 184)';
+    message1.style.backgroundColor = 'rgb(184, 184, 184)';
+});
+
+create.addEventListener('mouseenter', () => {
+    create.style.color = 'white';
+    art.style.color = 'black';
+    message1.style.color = 'black';
+    create.style.backgroundColor = 'green';
+    art.style.backgroundColor = 'rgb(184, 184, 184)';
+    message1.style.backgroundColor = 'rgb(184, 184, 184)';
+});
+
+message1.addEventListener('mouseenter', () => {
+    message1.style.color = 'white';
+    art.style.color = 'black';
+    create.style.color = 'black';
+    message1.style.backgroundColor = 'green';
+    art.style.backgroundColor = 'rgb(184, 184, 184)';
+    create.style.backgroundColor = 'rgb(184, 184, 184)';
+});
+
+
+

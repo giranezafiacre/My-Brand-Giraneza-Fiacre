@@ -68,9 +68,6 @@ if (navigator.geolocation) {
 } else {
   alert("Geolocation is not supported");
 }
-// /////////////////////
-
-
 
 document.getElementById('contactForm2').addEventListener('submit', submitForm2);
 
