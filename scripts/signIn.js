@@ -9,6 +9,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  var db=firebase.firestore();
 
   document.getElementById('loginForm').addEventListener('submit', submitForm);
 
@@ -47,13 +48,24 @@ firebase.auth().onAuthStateChanged(function(user) {
   function login(userEmail,userPass){
   
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function() {
-      if(userEmail==='Admin@gmail.com'&&userPass==='123456'){
-        window.location.href = 'ownerPage.html';
-        
-      }else{
-        window.location.href = 'blogPage.html';
-        
-      }
+      db.collection("users").where("email", "==", userEmail)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            if (doc.data().role == 'admin') {
+              window.location.href = 'ownerPage.html';
+            } else {
+              window.location.href = 'blogPage.html';
+
+            }
+
+          });
+        })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
+        });
       
     }).catch(function(error) {
       // Handle Errors here.

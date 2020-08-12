@@ -9,6 +9,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  var db=firebase.firestore();
 
   const submitForm=(e)=> {
     e.preventDefault();
@@ -30,8 +31,10 @@ const getInputVal=(id)=> {
   const signUp=(userEmail,userPass)=>{
   
     firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function() {
+      save(userPass,userEmail);
       logout();
       window.location.href = 'signIn.html';
+      
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -40,7 +43,19 @@ const getInputVal=(id)=> {
       logout();
     //   
     });
-    
+    save(userPass,userEmail);
+  }
+  function save(userPass,userEmail){
+    db.collection('users').doc().set({
+      password:userPass,
+      email:userEmail,
+      role:'user'
+    }).then(function () {
+      alert("Document successfully written!");
+    })
+    .catch(function (error) {
+      alert("Error writing document: ", error);
+    });
   }
   
   function logout(){
