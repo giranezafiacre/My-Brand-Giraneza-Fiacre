@@ -89,23 +89,25 @@ var key1
 window.onload = function () {
     this.getdata();
 }
-function logout(){
+function logout() {
     firebase.auth().signOut();
-  }
+}
 function getdata() {
     var head = document.getElementById('head');
     var blog = document.getElementById('blog');
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                "<li><a href='contactPage.html'>About me</a></li>" +
-                "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>" +
-                "<li><a href='signUp.html'>SignUp</a></li>";
-        } else {
-            head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                "<li><a href='contactPage.html'>About me</a></li>" +
-                "<li><a href='signIn.html'>SignIn</a></li>" +
-                "<li><a href='signUp.html'>SignUp</a></li>";
+        if (head) {
+            if (user) {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>" +
+                    "<li><a href='signUp.html'>SignUp</a></li>";
+            } else {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html'>SignIn</a></li>" +
+                    "<li><a href='signUp.html'>SignUp</a></li>";
+            }
         }
     });
     db.collection("posts").get().then(function (snapshot) {
@@ -224,8 +226,14 @@ function update_post(key) {
     db.collection('posts').doc(docs1).update({
         content: document.getElementById('post').value,
         title: document.getElementById('title').value
-    });
-    getdata();
+    }).then(function () {
+        alert('updated successfully');
+        location.reload();
+    })
+        .catch(function (error) {
+            alert("Error writing document: ", error);
+        });
+
 }
 
 function updatelike(key) {

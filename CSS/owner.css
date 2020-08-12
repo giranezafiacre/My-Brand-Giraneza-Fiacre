@@ -1,7 +1,8 @@
 body{
     height: 95vh;
     font-family: "Lato",sans-serif;
-    background-image: linear-gradient(to right bottom,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8)),url(../Images/Books.jpg);
+    /* background-image: linear-gradient(to right bottom,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8)); */
+    background-color: #F9FCFD;
     background-size : cover;
     background-position: top;
     position: relative;
@@ -35,13 +36,13 @@ header a{
     margin-top: 10vh;
     margin-bottom: 10vh;
     border-radius: 2.5vh;
-    background-color: rgb(247, 247, 141);
     padding: 2vh;
 }
 
 .table span{
-    margin-left: 2vw;
-    background-color: white;
+    margin-left: 9.8vw;
+    font-weight: bolder;
+    color: rgb(223, 25, 223);
     padding: 1vh 2vw 1vh 2vw ;
     border-radius: 1vh;
 }
@@ -53,14 +54,15 @@ header a{
 }
 textarea{
     border-radius: 2vh;
-    width: 70%;
+    width: 95%;
     height: 50vh;
     margin-top: 2vh;
     outline: none;
     white-space: pre-wrap;
 }
 #text-center button{
-    margin-left: 2vw;
+    margin-left: 0vw;
+    margin-top: 2vh;
     background-color: white;
     padding-top: 1vh;
     padding-left: 2vw;
@@ -71,9 +73,12 @@ textarea{
 }
 .table table{
     width: 86%;
+    padding-left: 2vw;
+    padding-right: 2vw;
     margin-top: 2vh;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: #fff ;
 }
 table a{
     text-decoration: none;
@@ -84,11 +89,12 @@ table a{
     height: max-content;
 }
 .card{
-    margin-left: 2vw;
+    margin-left: 10vw;
     margin-top: 3vh;
+    
 }
 .card #title{
-    width: 70%;
+    width: 95%;
     height: 5vh;
     border-radius: 2vh;
     border: groove;
@@ -96,10 +102,13 @@ table a{
 }
 table tr{
     margin-top: 3vh;
-    background-color: white;
 }
 table td{
     padding: 3vh 5vw 3vh 5vw;
+    border-bottom: 1px solid black;
+}
+table tr:last-child td{
+    border-bottom: 1px none black;
 }
 table button{
     margin-left: 2vw;
@@ -148,10 +157,13 @@ table button{
         margin-left: 0vw;
         margin-right: -20vw;
     }
-    .table{
-        width: 270%;
+    .table,.table table,.card #title,textarea{
+        width: 100%;
     }
-    
+   
+    textarea{
+        height: 30vh;
+    }
  } 
  
  
@@ -177,9 +189,11 @@ table button{
         margin-left: 0vw;
         margin-right: -20vw;
     }
-    .table{
-        width: 270%;
-    }
+    
+    
+    /* .table{
+        width: 100%;
+    } */
  }
  
 @media screen and (min-width: 600px) and (max-width: 1000px){
@@ -191,7 +205,5 @@ table button{
     header a{
         margin-left: 6vw;
     }
-    .table{
-        width: 270%;
-    }
+    
  } 
