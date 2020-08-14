@@ -17,10 +17,6 @@ var ToDo = [{
     id: 2,
     name: 'test'
 }];
-// server.configure(function(){
-//     server.use(express.bodyParser());
-//     server.use(server.router);
-//   });
 server.listen(port, console.log(`server listening on ${port}`));
 server.get('/', (req, res) => res.status(200)
     .json({
@@ -41,20 +37,4 @@ server.get('/', (req, res) => res.status(200)
         });
     }
 
-server.post('/create', (req, res) =>{
-    // let id=req.params.id;
-    // let name=req.params.name;
-    const {
-        id,name,
-    } = req.body;
-    // // console.log(request.body);
-    var newTodo = req.body;
-    ToDo.push(newTodo);
-    res.status(201)
-    .json({
-        status: 201,
-        message: 'ToDo created',
-        data:newTodo,
-    });
-});
 export default server;
