@@ -7,6 +7,7 @@ body{
     background-position: top;
     position: relative;
 }
+
 #botoes li{
     display: inline-block;
     list-style-type: none;
@@ -51,10 +52,11 @@ header a{
 }
 .table .qtitle{
     margin-top: 5vh;
+    display: none;
 }
 textarea{
     border-radius: 2vh;
-    width: 95%;
+    width: 170%;
     height: 50vh;
     margin-top: 2vh;
     outline: none;
@@ -72,12 +74,12 @@ textarea{
     border-radius: 1vh;
 }
 .table table{
-    width: 86%;
+    width: 70%;
     padding-left: 2vw;
     padding-right: 2vw;
     margin-top: 2vh;
-    margin-left: 10%;
-    margin-right: 10%;
+    /* margin-left: 10%; */
+    /* margin-right: 10%; */
     background-color: #fff ;
 }
 table a{
@@ -91,10 +93,9 @@ table a{
 .card{
     margin-left: 10vw;
     margin-top: 3vh;
-    
 }
 .card #title{
-    width: 95%;
+    width: 170%;
     height: 5vh;
     border-radius: 2vh;
     border: groove;
@@ -134,6 +135,76 @@ table button{
     padding-bottom: 1vh;
     padding-right: 2vw;
     border-radius: 1vh;
+}
+#container{
+    display: inline-flex;
+}
+#container #inline{
+        display: block;
+        justify-content: center;
+        
+}
+#container #inline:last-child{
+    margin-left: 5vw;
+}
+#tabs{
+    width: 20%;
+    margin-top: 15vh;
+    margin-bottom: -30vh;
+}
+#tabs button{
+    color: black;
+    width: 160px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: rgb(214, 214, 214);
+    box-shadow: 10px 10px rgba(59, 56, 56, 0.76);
+    
+}
+#tabs button:hover{
+    background-color: green;
+    color: white;
+}
+#tabs #articles1{
+    color:rgb(223, 25, 223);
+}
+#tabs #articles1:hover{
+    color: white;
+    background-color: green;
+}
+.alert1,.alert2{
+    text-align: center;
+    color: white;
+    width: 10%;
+    background-color: green;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    margin-left: 36vw;
+    display:none;
+  }
+  .error{
+    text-align: center;
+    color: white;
+    width: 10%;
+    background-color: red;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    margin-left: 36vw;
+    display:none;
+  }
+
+#message{
+    display: none;
+}
+#qtitle{
+    display: none;
+}
+#message{
+    display: none;
+}
+#card{
+    display: none;
 }
 @media screen and (max-width: 450px){
     header{
@@ -207,3 +278,5 @@ table button{
     }
     
  } 
+ /*  */
+ 

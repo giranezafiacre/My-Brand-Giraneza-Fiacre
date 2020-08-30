@@ -21,36 +21,54 @@
         </nav>
     </header>
     <section>
-        <div class="table">
-
-            <span>articles</span>
-            <div id="articles">
-
+        <div class="alert1">Successfully uploaded</div>
+        <div class="alert2">Successfully updated</div>
+        <div class="error">error accured</div>
+        <div id="container">
+            <div id='inline'>
+                <div id="tabs">
+                    <button id="articles1">Articles</button><br>
+                    <button id="create">Create Post</button><br>
+                    <button id="messages">Messages</button>
+                </div>
             </div>
 
-            <div class="qtitle"><span class="newArt">write new Article:</span></div>
-            <div class="card">
-                <div class="card-body">
-                    <form id="post-form">
-                        <input type="text" id="title" placeholder="Title"><br>
-                        <textarea id="post" placeholder="What's on your mind..."></textarea><br>
-                        
-                        <div id="text-center" class="text-center">
-                            <input type="file" id="image" accept="images/*">
-                            <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
+            <div id="inline">
+                <div class="table">
+
+                    <!-- <span>Articles</span> -->
+                    <div id="articles">
+
+                    </div>
+
+                    <div class="qtitle" id="qtitle"><span class="newArt">write new Article:</span></div>
+                    
+                    <div class="card" id='card'>
+                        <div class="card-body">
+                            <form id="post-form">
+                                <input type="text" id="title" placeholder="Title"><br>
+                                <textarea id="post" placeholder="What's on your mind..."></textarea><br>
+
+                                <div id="text-center" class="text-center">
+                                    <input type="file" id="image" accept="images/*">
+                                    <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
+                                </div>
+
+                            </form>
                         </div>
 
-                    </form>
+                    </div>
+                    <!-- <div class="qtitle"><span>messages</span></div> -->
+                    <div id="message">
+
+                    </div>
+
+
                 </div>
-
             </div>
-            <div class="qtitle"><span>messages</span></div>
-            <div id="message">
-
-            </div>
-
 
         </div>
+
     </section>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
