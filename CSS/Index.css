@@ -225,7 +225,7 @@ header a{
     background-color: white;
     background-size: cover;
     display: flex;
-    margin-left: -5vw;
+    margin-left: -18vw;
     
     justify-content: center;
     width: 103.3vw;
@@ -241,11 +241,11 @@ footer{
     margin-left: -0.5vw;
     padding-right: 6vw;
     margin-right: -5.5vw;
-    width: 87vw;
-    height:130px;
+    width: 100vw;
+    height:90px;
     margin-top: -0px;
-    clear: both;
-    position: relative;
+    /* clear: both;
+    position: relative; */
     }
 
 footer nav{
@@ -469,10 +469,11 @@ transition: 0.2s ease-out;
         width: 120%;
         position: absolute;
         margin-left: -4vw;
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
     .images{
-        width: inherit;
+        width: 100vw;
+        margin-left: 5vw;
     }
     .images .summary{
         margin-right: 18.2vw;
@@ -484,21 +485,21 @@ transition: 0.2s ease-out;
             margin-left: 10vw;
         }
     footer {
-        width: inherit;
-        margin-left: -4vw;
+        width: 100vw;
+        /* margin-left: -4vw; */
             }
     .black{
-        width: inherit;
+        width: 100vw;;
                 
         }
  }
 @media screen and (min-width: 600px) and (max-width: 1000px){
 
-    .down{
+    /* .down{
         width: 120%;
         margin-left: -4vw;
-        overflow-x: hidden;
-    }
+        /* overflow-x: hidden; */
+     /*} */ 
     .images{
         width: inherit;
     }
@@ -506,7 +507,7 @@ transition: 0.2s ease-out;
          margin-right: 7.35vw;
          } 
          footer {
-            width: inherit;
+            width: 100vw;
             }
             .black{
                 width: inherit;
