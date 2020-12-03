@@ -7,7 +7,6 @@ body{
     background-position: top;
     position: relative;
 }
-
 #botoes li{
     display: inline-block;
     list-style-type: none;
@@ -155,12 +154,14 @@ table button{
 #tabs button{
     color: black;
     width: 160px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: none;
     outline: none;
+    margin-bottom: 5px;
     font-size: 20px;
     background-color: rgb(214, 214, 214);
-    box-shadow: 10px 10px rgba(59, 56, 56, 0.76);
-    
+    /* box-shadow: 10px 10px rgba(59, 56, 56, 0.76); */
 }
 #tabs button:hover{
     background-color: green;

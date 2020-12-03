@@ -7,6 +7,17 @@
     justify-content: center;
     vertical-align: middle;
 }
+#p{
+    line-height: 1.5em;
+    text-align: left;
+    white-space: pre-wrap;
+    margin: auto;
+}
+
+#blogphoto img{
+    width:200px;
+    height:100px;
+}
 header img{
     height: 8vh;
     -webkit-padding-start: 0vh;
@@ -114,9 +125,12 @@ h4{
     font-size: 18px;
     margin-right: 15vw;
 }
-.pimg9{
-    margin-left: 7vw;
-    display: inline-flex;
+
+.p9 img{
+    width: 1000px;
+    height: 300px;
+    margin: auto;
+    display: block;
 }
 .p9 p{
     width: 60vw;
@@ -156,7 +170,9 @@ button{
     
 }
 #few{
-    margin-left: 10vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 h1{
     text-align: center;
