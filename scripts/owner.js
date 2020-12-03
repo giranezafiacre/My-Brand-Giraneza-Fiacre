@@ -15,7 +15,7 @@ function upload() {
     //get your image
     var image = document.getElementById('image').files[0];
     //get your blog text
-    var post = document.getElementById('post').value;
+    var post = document.querySelector('#post').value;
     var title = document.getElementById('title').value
     //get image name
     var imageName;
@@ -153,7 +153,7 @@ function getdata() {
                 "<p>" + doc.data().content.split(' ').splice(0, 30).join(' ') + "</p>" +
                 "<p>" + doc.data().content.split(' ').splice(31, 45).join(' ') + "</p>" +
                 " </div>" +
-                "<div class='p'>" +
+                "<div class='p' id='blogphoto'>" +
                 "<img src='" + doc.data().imageURL + "' alt='' srcset=''>" +
                 "</div>" +
                 "</div>" +
@@ -311,17 +311,13 @@ function readmore(key) {
             var comments = doc.data().comments;
             var m = "<h1>" + doc.data().title + "</h1>" +
                 "<div class='pimg9'>" +
-
-                "<div class='p9'>" +
-                "<p>" + doc.data().content.split(' ').splice(0, 15).join(' ') + "</p>" +
-                "</div>" +
                 "<div class='p9'>" +
                 "<img src='" + doc.data().imageURL + "' alt='' srcset=''>" +
                 "</div>" +
                 "</div>" +
 
-                "<div id='p'><p>" + doc.data().content.split(' ').splice(15).join(' ') + "</p></div><br>" +
-                "<div id='other9' class='other9'>" +
+                "<div id='p'></div>" +
+                "<br><div id='other9' class='other9'>" +
                 "<span>is there any suggestion,comment or question you have?</span><br>" +
                 "<div class='comment9'>" +
                 "<div class='alert1'>Successfully uploaded</div>"+
@@ -346,6 +342,8 @@ function readmore(key) {
 
             m += "</div></div>";
             art_div.innerHTML = m;
+            let content= doc.data().content;
+            document.querySelector('#p').innerHTML =content;
         });
     } else {
         window.location.href = 'blogPage.html';

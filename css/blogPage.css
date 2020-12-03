@@ -7,6 +7,18 @@
     justify-content: center;
     vertical-align: middle;
 }
+#p{
+    line-height: 1.5em;
+    text-align: left;
+    white-space: pre-wrap;
+}
+#p ul{
+    margin-left: 1em !important;
+}
+#blogphoto img{
+    width:200px;
+    height:100px;
+}
 header img{
     height: 8vh;
     -webkit-padding-start: 0vh;
@@ -117,6 +129,10 @@ h4{
 .pimg9{
     margin-left: 7vw;
     display: inline-flex;
+}
+.p9 img{
+    width: 1000px;
+    height: 300px;
 }
 .p9 p{
     width: 60vw;
