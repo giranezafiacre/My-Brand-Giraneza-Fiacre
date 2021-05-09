@@ -6,34 +6,30 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+#botoes{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+}
 #botoes li{
-    display: inline-block;
     list-style-type: none;
-    justify-content: center;
-    vertical-align: middle;
 }
-header img{
+#botoes img{
     height: 8vh;
-    -webkit-padding-start: 0vh;
     border-radius: 1vh;
-    margin-left: 4vw;
-    margin-right: 33vw;
-    margin-bottom: 3vh;
 }
-header a{
-    vertical-align:bottom;
+#botoes a{
     text-decoration: none;
     color: green;
     font-size: 18px;
-    margin-left: 10vw;
-}
-.title{
-    color: rgb(194, 38, 194);
-    font-size: 18px;
-    margin-right: 10vw;
 }
 p{
-    width: 20vw;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     margin-bottom: 5vh;
 }
@@ -41,57 +37,45 @@ h3{
     text-align: center;
 }
 .all{
-    display: inline-flex;
-    justify-content: center;
-    height: 80vh;
-    background-color:rgb(24, 23, 23);
-    color: rgb(196, 190, 190);
+    display: flex;
+    align-items: stretch;
+    width: 60vw;
+    height: fit-content;
     margin-top: 0.5vh;
-    margin-left: 15vw;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 5vh;
 }
 .photocodes,.photocodes1{
-    width: 20vw;
-    margin-left: 8vw;
+    background-color:rgb(24, 23, 23);
+    color: rgb(196, 190, 190);
+    width: 30vw;
 }
-.photocodes1 img{
-    height: 85vh;
-    width: 35vw;
+.photocodes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.input input{
-    height: 9vh;
-    border-radius: 1vh;
-    width: 20vw;
-    border-right: none;
-    border-left: none;
-    border-top: none;
-    margin-bottom: 6vh;
-    margin-left: 5.2vw;
-    outline: none;
-    margin-right: 10vw;
+.photocodes1{
+    background-image: url(../images/Glasses.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.sideNav{
-    margin-top: 4vh;
+.icons{
+    margin-left: 20px;
 }
-.sideNav img{
+.icons ul{
+    display: flex;
+    align-items: center;
+}
+.icons img{
     height: 5vh;
     width: 3vw;
     border-radius: 2vh;
-    margin-left: -3vw;
-}
-.input input{
-    height: 16vh;
-    border-radius: 1vh;
-    width: 25vw;
-    margin-bottom: 6vh;
-    margin-left: 5.2vw;
-    margin-right: 15vw;
-}
-.photocodes span{
-    margin-left: 2vw;
+    margin-right: 1.3vw;
 }
 
-@media screen and (max-width: 450px){
+/* @media screen and (max-width: 450px){
     header{
         margin-right: -20vw;
         width: 120%;
@@ -114,13 +98,13 @@ h3{
         margin-right: -20vw;
     }
     .text{
-        width: 120%;
+         width: 120%; 
     }
     h3{
-        width: 80vw;
+         width: 80vw; 
     }
     p{
-        width: 50vw;
+         width: 50vw; 
     }
     .all{
         justify-content: center;
@@ -128,7 +112,7 @@ h3{
         padding-right: 40vw;
         padding-left: 10vw;
         padding-bottom: 20vh;
-        margin-left: 10vw;
+        margin-left: 10vw; 
     }
     .photocodes1{
         visibility: hidden;
@@ -147,7 +131,7 @@ h3{
     }
  }
  
- @media screen and (min-width: 450px) and (max-width: 600px){
+/* @media screen and (min-width: 450px) and (max-width: 600px){
     header img{
         margin-right: 20vw;
         margin-left: -3vw;
@@ -156,8 +140,8 @@ h3{
         margin-left: 6vw;
     }
     .all{
-        height: 90vh;
-        margin-left: 20vw;
+        /* height: 90vh;
+        margin-left: 20vw; 
     }
     .photocodes1{
         visibility: hidden;
@@ -177,7 +161,7 @@ h3{
     }
     
  }
- @media screen and (min-width: 600px) and (max-width: 1000px){
+/* @media screen and (min-width: 600px) and (max-width: 1000px){
 
     header img{
         margin-right: 20vw;
@@ -210,7 +194,7 @@ h3{
         margin-left: -3vw;
     }
  } 
- @media screen and (max-height:600px){
+ /*@media screen and (max-height:600px){
     .all{
         
         height: 140vh;
@@ -221,4 +205,4 @@ h3{
         height: 145vh;
     }
  }
- 
+  */
