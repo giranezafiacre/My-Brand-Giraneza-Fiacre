@@ -41,9 +41,9 @@ h3{
     align-items: stretch;
     width: 60vw;
     height: fit-content;
-    margin-top: 0.5vh;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 5vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
     padding-bottom: 5vh;
 }
 .photocodes,.photocodes1{
