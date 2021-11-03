@@ -32,7 +32,7 @@ function upload() {
             imageURL: ''
         }).then(function (error) {
             if (error) {
-                document.querySelector('.error').innerHTML='Error while uploading'
+                document.querySelector('.error').innerHTML = 'Error while uploading'
                 document.querySelector('.error').style.display = 'block';
                 // Hide alert after 3 seconds
                 setTimeout(function () {
@@ -79,21 +79,21 @@ function upload() {
                     imageURL: downloadURL
                 }).then(function (error) {
                     if (error) {
-                        document.querySelector('.error').innerHTML="Error while uploading";
+                        document.querySelector('.error').innerHTML = "Error while uploading";
                         document.querySelector('.error').style.display = 'block';
                         setTimeout(function () {
                             document.querySelector('.error').style.display = 'none';
                         }, 3000);
                     } else {
                         //now reset your form
-                        document.querySelector('.alert2').innerHTML="Successfully uploaded";
+                        document.querySelector('.alert2').innerHTML = "Successfully uploaded";
                         document.querySelector('.alert2').style.display = 'block';
                         setTimeout(function () {
                             document.querySelector('.alert2').style.display = 'none';
                             document.getElementById('post-form').reset();
-                        getdata();
+                            getdata();
                         }, 3000);
-                        
+
                     }
                 });
             });
@@ -109,7 +109,6 @@ window.onload = function () {
 function logout() {
     firebase.auth().signOut();
 }
-
 function getdata() {
     var head = document.getElementById('head');
     var blog = document.getElementById('blog');
@@ -134,8 +133,9 @@ function getdata() {
         var blogposts = document.getElementById('all');
         //remove all remaining data in that div
         let i = 1;
+        let arr = [], arrCopy = [], arr2 = [], obj = {}, j = 1;
+
         var m, p;
-        m = "<div class='m' id='m'><table>";
         p = "<h3 >recent Articles</h3>";
         snapshot.forEach(function (doc) {
             var len = 0;
@@ -143,10 +143,12 @@ function getdata() {
                 len++;
             }
             key1 = doc.id;
-            m += "<tr><td>title " + i + "</td>" +
-                "<td>" + doc.data().title + "</td>" +
-                "<td><button onclick='update_area(" + doc.id + ")'>update</button></td>" +
-                "<td><button id='" + doc.id + "' onclick='delete_post(" + doc.id + ")'>Delete</button></td></tr>";
+            obj = {
+                id: doc.id,
+                data: doc.data()
+            }
+            arr.push(obj)
+
             p += "<h4 id='h4'>" + doc.data().title + "</h4>" +
                 "<div class='pimg'>" +
                 "<div class='p'>" +
@@ -173,15 +175,45 @@ function getdata() {
             i++;
 
         });
-        m += "</table></div>";
-        p += "</div>"
+        p += "</div>";
+        for (i = 0; i < arr.length; i++) {
+            arr2.push(arr[i]);
+            if (arr2.length == 3) {
+                arrCopy.push(arr2);
+                arr2 = [];
+            } else if (!arr[i + 1]) {
+                arrCopy.push(arr2);
+            }
+        }
+        let counter = 1;
+        m = "<div class='m' id='m'>";
+        for (let i = 0; i < arrCopy.length; i++) {
+            let iplus = i + 1;
+            m += "<div id='group_" + iplus + "'>";
+            m += "<table>";
+            for (let j = 0; j < 3; j++) {
+                if (arrCopy[i][j]) {
+                    let Objdata = arrCopy[i][j];
+                    m += "<tr><td>title " + counter + "</td>" +
+                        "<td>" + arrCopy[i][j].data.title + "</td>" +
+                        "<td><button onclick='update_area(" + arrCopy[i][j].id + ")'>update</button></td>" +
+                        "<td><button id='" + arrCopy[i][j].id + "' onclick='delete_post(" + arrCopy[i][j].id + ")'>Delete</button></td></tr>";
+                    counter++;
+
+                }
+
+
+            }
+            m += "</table>";
+            m += "<button>" + iplus + "</button>";
+            m += "</div>"
+            m += "</div>";
+        }
         if (posts_div) {
             posts_div.innerHTML = m;
         } else if (blogposts) {
             blogposts.innerHTML = p;
         }
-
-
     });
     db.collection("contacts").get().then(function (snapshot) {
         //get your posts div
@@ -210,7 +242,6 @@ function getdata() {
 
 function delete_post(key) {
     var docs1 = key.id.toString();
-    console.log(docs1)
     db.collection('posts').doc(docs1).delete();
     getdata();
 
@@ -267,7 +298,6 @@ function update_post(key) {
 }
 
 function updatelike(key) {
-    // 
     var docs1 = key.id.toString();
     db.collection("posts").doc(docs1).get().then(function (doc) {
         var likes = doc.data().likes;
@@ -280,7 +310,6 @@ function updatelike(key) {
 
 }
 function updatedislike(key) {
-    // 
     var docs1 = key.id.toString();
     db.collection("posts").doc(docs1).get().then(function (doc) {
         var dislikes = doc.data().dislikes;
@@ -294,7 +323,6 @@ function updatedislike(key) {
 
 function readmore(key) {
     var key1;
-    console.log(key);
     if (typeof key === 'string') {
         key1 = key;
     } else {
@@ -305,7 +333,6 @@ function readmore(key) {
     }
 
     var art_div = document.getElementById('few');
-    console.log(key1);
     if (key1) {
         db.collection("posts").doc(key1).get().then(function (doc) {
             var comments = doc.data().comments;
@@ -320,8 +347,8 @@ function readmore(key) {
                 "<br><div id='other9' class='other9'>" +
                 "<span>is there any suggestion,comment or question you have?</span><br>" +
                 "<div class='comment9'>" +
-                "<div class='alert1'>Successfully uploaded</div>"+
-                "<div class='alert2'>Successfully updated</div>"+
+                "<div class='alert1'>Successfully uploaded</div>" +
+                "<div class='alert2'>Successfully updated</div>" +
                 "<div class='error'>error accured</div>" +
                 "<textarea name='' id='text1' cols='70' rows='10'></textarea><br>" +
                 "<button id='" + key1 + "' onclick='saveComment(" + key1 + ")'>comment:</button>" +
@@ -342,8 +369,8 @@ function readmore(key) {
 
             m += "</div></div>";
             art_div.innerHTML = m;
-            let content= doc.data().content;
-            document.querySelector('#p').innerHTML =content;
+            let content = doc.data().content;
+            document.querySelector('#p').innerHTML = content;
         });
     } else {
         window.location.href = 'blogPage.html';
@@ -355,13 +382,12 @@ function saveComment(k) {
 
             var user1 = firebase.auth().currentUser;
             if (user1 != null) {
-                console.log('hi', user1.email);
                 db.collection("users").where("email", "==", user1.email)
                     .get()
                     .then(function (querySnapshot) {
                         querySnapshot.forEach(function (doc) {
                             let key1 = k.id.toString();
-                            let uname=doc.data().username;
+                            let uname = doc.data().username;
                             db.collection("posts").doc(key1).get().then(function (doc) {
                                 var m = [];
                                 m = doc.data().comments;
@@ -381,21 +407,21 @@ function saveComment(k) {
 
 
             } else {
-                document.querySelector('.error').innerHTML="not authorized";
+                document.querySelector('.error').innerHTML = "not authorized";
                 document.querySelector('.error').style.display = 'block';
                 setTimeout(function () {
                     document.querySelector('.error').style.display = 'none';
-                getdata();
+                    getdata();
                 }, 3000);
             }
         } else {
-            document.querySelector('.error').innerHTML="not authorized";
-                document.querySelector('.error').style.display = 'block';
-                setTimeout(function () {
-                    document.querySelector('.error').style.display = 'none';
+            document.querySelector('.error').innerHTML = "not authorized";
+            document.querySelector('.error').style.display = 'block';
+            setTimeout(function () {
+                document.querySelector('.error').style.display = 'none';
                 getdata();
-                }, 3000);
-            }
+            }, 3000);
+        }
 
     });
 }
@@ -405,9 +431,6 @@ art.addEventListener('click', () => {
     create.style.color = 'black';
     art.style.color = 'rgb(223, 25, 223)';
     message1.style.color = 'black';
-    //     art.style.backgroundColor= 'green';
-    // create.style.backgroundColor= 'rgb(184, 184, 184)';
-    // message1.style.backgroundColor='rgb(184, 184, 184)';
     document.getElementById('articles').style.display = 'block';
     document.getElementById('qtitle').style.display = 'none';
     document.getElementById('card').style.display = 'none';
@@ -418,9 +441,6 @@ create.addEventListener('click', () => {
     create.style.color = 'rgb(223, 25, 223)';
     art.style.color = 'black';
     message1.style.color = 'black';
-    // create.style.backgroundColor= 'green';
-    // art.style.backgroundColor= 'rgb(184, 184, 184)';
-    // message1.style.backgroundColor='rgb(184, 184, 184)';
     document.getElementById('articles').style.display = 'none';
     document.getElementById('qtitle').style.display = 'none';
     document.getElementById('card').style.display = 'block';
@@ -431,9 +451,6 @@ message1.addEventListener('click', () => {
     create.style.color = 'black';
     art.style.color = 'black';
     message1.style.color = 'rgb(223, 25, 223)';
-    // message1.style.backgroundColor= 'green';
-    //     art.style.backgroundColor= 'rgb(184, 184, 184)';
-    //     create.style.backgroundColor= 'rgb(184, 184, 184)';
     document.getElementById('articles').style.display = 'none';
     document.getElementById('qtitle').style.display = 'none';
     document.getElementById('card').style.display = 'none';
@@ -465,6 +482,5 @@ message1.addEventListener('mouseenter', () => {
     art.style.backgroundColor = 'rgb(184, 184, 184)';
     create.style.backgroundColor = 'rgb(184, 184, 184)';
 });
-
 
 
