@@ -13,59 +13,57 @@
 
 <body>
 
+
+    <div id="botoes">
+        <li><a href=""><img src="images/logo.jpg" alt="" srcset=""></a></li>
+        <li><a href="pages/contactPage.html">About me</a></li>
+        <li><a href="pages/blogPage.html">Blog</a></li>
+    </div>
     <div class="body">
-        <div id="botoes">
-            <li><a href=""><img src="images/logo.jpg" alt="" srcset=""></a></li>
-            <li><a href="pages/contactPage.html">About me</a></li>
-            <li><a href="pages/blogPage.html">Blog</a></li>
+        <!-- body paragraph -->
+        <div id="body-paragraph">
+            <p class="one">Hello there! I am Full-stack Software Engineer with different skills including, but not limited to MERN & PERN
+                stacks. A technology enthusiast with an interest in using any kind of technology to solve community
+                problems. Has the ability to live in diverse communities with cultural differences and managing time
+                effectively. Proud when creating solutions to problems. An effective leader who works well both
+                individually and in the team, with commitment when learning new skills.</p>
+            <div class="started">
+                <a href="pages/signUp.html">JOIN ME NOW</a>
+            </div>
         </div>
     </div>
+
+    <!-- end of body paragraph -->
     <section class="sideNav">
         <ul>
-            <div class="gmail1"><a href="https://mail.google.com/mail"><img class="gmail" src="images/gmail.png" alt=""
-                        srcset=""></a><span class="gmailtext">text me at
-                    fiacregiraneza@gmail.com</span></div>
-        </ul>
-        <ul>
-            <div class="phone1"><img class="phone" src="images/phone.jpg" alt="" srcset=""><span class="phonetext">call
-                    me on +250785405716</span></div>
-        </ul>
-        <ul>
-            <div class="whatsap1"><a href="https://web.whatsapp.com/"><img src="images/whatsap.jpg" alt=""
-                        srcset=""></a><span class="whatsaptext">chat with
-                    me on 0727910850</span></div>
-        </ul>
-        <ul>
-            <div class="location1"><img class="location" src="images/location.png" alt="" srcset="">
-                <span class="loctext">can find me at Gishushu-Gasabo</span>
+            <div class="gmail1 side-div"><a href="https://mail.google.com/mail"><img class="gmail sidenav-img"
+                        src="images/gmail.png" alt="" srcset=""></a>
+                <span class="gmailtext">text me at
+                    fiacregiraneza@gmail.com</span>
             </div>
         </ul>
         <ul>
-            <div class="facebook1"><a href="https://www.facebook.com/"><img src="images/facebook.svg" alt=""
-                        srcset=""></a><span class="facebooktext">search
+            <div class="phone1 side-div"><img class="phone sidenav-img" src="images/phone.jpg" alt="" srcset=""><span
+                    class="phonetext">call
+                    me on +250785405716</span></div>
+        </ul>
+        <ul>
+            <div class="whatsap1 side-div"><a href="https://web.whatsapp.com/"><img class="sidenav-img"
+                        src="images/whatsap.jpg" alt="" srcset=""></a><span class="whatsaptext">chat with
+                    me on 0727910850</span></div>
+        </ul>
+        <ul>
+            <div class="facebook1 side-div"><a href="https://www.facebook.com/"><img class="sidenav-img"
+                        src="images/facebook.png" alt="" srcset=""></a><span class="facebooktext">search
                     "Giraneza Fiacre" on facebook</span></div>
         </ul>
     </section>
 
-    <p class="one">Hello there,this website is for my portofolio and interested
-        friends,employers,partners
-        and
-        anyone
-        else who can
-        contribute to my career development.you will be able to read articles I put everyday,my life and my
-        qualifications in my career.My name is Fiacre Giraneza I am software developer,web designer. The
-        languages I use is javascript, java,C and python a little bit. for more info of mine click on "about me"
-        from above navigation bar</p>
-    <div class="started">
-        <a href="pages/signUp.html">JOIN ME NOW</a>
-    </div>
-
-
-
-    <div class="black">
+    <!-- start of black section -->
+    <div data-inviewport="fade-rotate" class="black">
         <div class="alert2">saved successfully</div>
         <div class="blackparagraph">
-            <p>to see articles on this website first fill your contact in form below
+            <p>You may want to send comment, idea or a question, I will respond to you in no time
             </p>
         </div>
         <div class="inputform">
@@ -73,7 +71,7 @@
                 <div class="form">
                     <div class="upperform">
                         <input type="text" value="" placeholder="Full names" required>
-                        <input type="email" value="" placeholder="email" required>
+                        <input type="email" id='email' value="" placeholder="email" required>
                         <input type="phone" value="" placeholder="phone" required>
                     </div>
                     <div class="lowerform"><textarea cols="30" rows="10" placeholder="put a message you want...."
@@ -84,6 +82,16 @@
             </form>
         </div>
     </div>
+    <!-- end of black section -->
+
+    <!-- end of images -->
+    <!-- 
+    
+   
+    
+ -->
+
+    <!--
     <div class="photocodes">
         <div class="input">
             <h3>Contact Form</h3>
@@ -134,13 +142,12 @@
             <div><a href="pages/contactPage.html">About me</a></div>
             <div><a href="pages/blogPage.html">Blog</a></div>
         </div>
-    </footer>
+    </footer> -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script src="./scripts/fireInit.js"></script>
     <script src="./scripts/fIndex.js" type="text/javascript"></script>
-
+    <script src="./scripts/index.js" type="text/javascript"></script>
 </body>
-<script src="./scripts/index.js" type="text/javascript"></script>
 
 </html>

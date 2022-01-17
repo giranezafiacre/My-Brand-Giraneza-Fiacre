@@ -103,31 +103,33 @@ function upload() {
 }
 var key1
 
-window.onload = function () {
+window.onload = async function () {
+    await this.getArticles()
+    this.storeId(1)
     this.getdata();
 }
 function logout() {
     firebase.auth().signOut();
 }
-function getdata() {
-    var head = document.getElementById('head');
-    var blog = document.getElementById('blog');
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (head) {
-            if (user) {
-                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                    "<li><a href='contactPage.html'>About me</a></li>" +
-                    "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>";
-                blog.innerHTML = "<a href='signIn.html' onclick='logout()'>Logout</a>";
-            } else {
-                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
-                    "<li><a href='contactPage.html'>About me</a></li>" +
-                    "<li><a href='signIn.html'>SignIn</a></li>";
-                blog.innerHTML = "<a href='signIn.html' >Login</a>"
-            }
+function storeId(id){
+    localStorage.setItem('id',id)
+    showArticlePagination()
+  }
+function showArticlePagination(){
+    arr=localStorage.getItem('arrkeys')
+    console.log(arr)
+    arr=arr.split(',')
+    arr.forEach(key=>{
+        if(key==localStorage.getItem('id')){
+            document.getElementById(key).style.display='table';
+        }else{
+            document.getElementById(key).style.display='none';
         }
-    });
-    db.collection("posts").get().then(function (snapshot) {
+    })
+    
+  }
+async function getArticles(){
+    await db.collection("posts").get().then(function (snapshot) {
         //get your posts div
         var posts_div = document.getElementById('articles');
         var blogposts = document.getElementById('all');
@@ -189,7 +191,7 @@ function getdata() {
         m = "<div class='m' id='m'>";
         for (let i = 0; i < arrCopy.length; i++) {
             let iplus = i + 1;
-            m += "<div id='group_" + iplus + "'>";
+            m += "<div id='" + iplus + "' style='display:none;'>";
             m += "<table>";
             for (let j = 0; j < 3; j++) {
                 if (arrCopy[i][j]) {
@@ -205,16 +207,45 @@ function getdata() {
 
             }
             m += "</table>";
-            m += "<button>" + iplus + "</button>";
             m += "</div>"
-            m += "</div>";
+            
         }
+        m+=`<div id='pagination-buttons' style='display:flex; flex-direction:row;'>`
+        let arrkeys=[]
+        for (let i=1; i<4;i++){
+            arrkeys.push(i)
+            m += `<button onclick='storeId(${i})'>${i}</button>`;
+        }
+        localStorage.setItem('arrkeys',arrkeys)
+        m+=`</div>`
+        m += "</div>";
         if (posts_div) {
             posts_div.innerHTML = m;
         } else if (blogposts) {
             blogposts.innerHTML = p;
         }
     });
+}
+async function getdata() {
+    var head = document.getElementById('head');
+    var blog = document.getElementById('blog');
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (head) {
+            if (user) {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html' onclick='logout()'>Logout</a></li>";
+                blog.innerHTML = "<a href='signIn.html' onclick='logout()'>Logout</a>";
+            } else {
+                head.innerHTML = "<li><a href='../index.html'><img src='../images/logo.jpg' alt='' srcset=''></a></li>" +
+                    "<li><a href='contactPage.html'>About me</a></li>" +
+                    "<li><a href='signIn.html'>SignIn</a></li>";
+                blog.innerHTML = "<a href='signIn.html' >Login</a>"
+            }
+        }
+    });
+    
+    
     db.collection("contacts").get().then(function (snapshot) {
         //get your posts div
         var contacts_div = document.getElementById('message');
